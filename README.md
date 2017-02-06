@@ -1,2 +1,2 @@
 # project build by NhutJS
-# 2017
+# shop front-end [ReactJS]
