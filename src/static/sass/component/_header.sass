@@ -1,0 +1,310 @@
+// @Author: Tran Van Nhut <nhutdev>
+// @Date:   2017-03-01T11:28:18+07:00
+// @Email:  tranvannhut4495@gmail.com
+// @Last modified by:   nhutdev
+// @Last modified time: 2017-03-01T11:38:34+07:00
+
+
+
+.header
+  background: $blue-primary
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 999
+
+.header_top
+  height: 32px
+  +displayFlex()
+  +alignItems(center)
+  background:
+    color: $blue-second
+  +transition(all 450ms)
+  overflow: hidden
+
+.header_top_hide
+  height: 0
+
+.header_top_left
+  margin: 0 !important
+  a
+    text-decoration: none
+    color: $white
+
+.header_content
+  +displayFlex()
+  +alignItems(center)
+  @media (max-width: 767px)
+    padding-bottom: 46px
+    position: relative
+
+.brand_logo
+  font:
+    family: 'Berkshire Swash', cursive
+    size: 2.4rem
+  text-decoration: none
+  color: $white
+
+.header_search_wrap
+  @media (max-width: 767px)
+    position: absolute
+    bottom: 8px
+    left: 0
+
+.header_search
+  position: relative
+  z-index: 99
+
+.header_search_btn-categories
+  position: relative
+  background-color: $white
+  color: $black
+  width: 80px
+  height: 30px
+  float: left
+  text-align: left
+  cursor: pointer
+  padding: 0 8px
+  font-size: 14px
+  +displayFlex()
+  +alignItems(center)
+  +justifyContent(space-between)
+  &::after
+    content: ''
+    position: absolute
+    width: 1px
+    height: 20px
+    right: 1px
+    top: 5px
+    background: rgba($black, 0.38)
+  span
+    white-space: nowrap
+    overflow: hidden
+    // width: 40px
+    text-overflow: ellipsis
+    word-break: break-word
+  .fa-chevron-down
+    font-size: 10px
+
+.form_menu-cate
+  position: absolute
+  bottom: 0
+  left: 0
+  +transform(translateY(100%) scale(0))
+  +transition(transform $transition)
+  transform-origin: top left
+  width: 200px
+  box-shadow: $shadow
+  background: $white
+  padding: 4px 0
+  li
+    padding: 4px 1em
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    &:hover
+      background: $silver
+  &.active
+    +transform(translateY(100%) scale(1))
+
+.header_search_input
+  outline: none
+  border: none
+  width: calc(100% - 80px)
+  height: 30px
+  padding: 0 38px 0 8px
+
+.header_search_btn-submit
+  position: absolute
+  top: 0
+  right: 0
+  height: 30px
+  width: 30px
+
+.header_content_right
+  +displayFlex()
+  +justifyContent(flex-end)
+  +alignItems(center)
+
+.header_account
+  float: left
+  margin-right: 8px
+  position: relative
+  cursor: pointer
+  color: $white
+  padding: 4px
+  border: 1px solid transparent
+  text-align: left
+  .fa
+    margin-right: 4px
+  span
+    display: block
+    @media (max-width: 597px)
+      display: none
+  &:hover
+    border-color: $white
+    .fa
+      color: $blue-second
+
+.header_cart
+  font-size: 14px
+  // +displayFlex()
+  // +alignItems(center)
+  // +justifyContent(space-between)
+  height: 38px
+  border: 1px solid $white
+  color: $white
+  padding: 0 8px
+  &:hover
+    background-color: $blue-second
+    border-color: $blue-second
+  .text
+    margin: 0 4px
+    @media (max-width: 596px)
+      display: none
+  .fa
+    font-size: 18px
+    margin-right: 4px
+
+.header_cart_value
+  color: $red
+  background: $white
+  padding: 4px
+  margin-left: 4px
+
+//list navigation
+.nav
+  position: relative
+
+#collapse-nav-btn
+  height: 30px
+  width: 200px
+  color: $white
+  text-align: left
+  padding-left: 0.5em
+  +transition(all $transition)
+  &:hover
+    background: $blue-second
+  .fa
+    margin-right: 0.5em
+
+.nav_menu
+  position: absolute
+  bottom: 0
+  // left: 0
+  display: table
+  width: 200px
+  z-index: 98
+  background: $white
+  box-shadow: $shadow
+  +transform(translateY(100%) scaleY(1))
+  +transition(all $transition)
+  transform-origin: top
+  -webkit-transform-origin: top
+  -moz-transform-origin: top
+  -ms-transform-origin: top
+  -o-transform-origin: top
+  &.active
+    +transform(translateY(100%) scaleY(0))
+  > li
+    width: 200px
+    max-width: 200px
+    display: inline-block
+    float: left
+    a
+      position: relative
+      padding: 8px 0.5em
+      display: block
+      max-width: 100%
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      color: $black
+      +transition(all $transition)
+      &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 3px
+        height: 100%
+        background: $red
+        +transform(scaleY(0))
+        +transition(transform $transition)
+      .fa
+        margin-right: 0.5em
+    &:hover
+      > a
+        background: $blue-primary
+        color: $white
+        &::before
+          +transform(scaleY(1))
+      ul.menu-second
+        display: block
+    ul.menu-second
+      position: absolute
+      right: 0
+      top: 0
+      +transform(translateX(100%))
+      background: $white
+      box-shadow: $shadow
+      height: 100%
+      width: 300%
+      display: none
+      > li
+        @extend .col-sm-4
+        a
+          position: relative
+          &:hover
+            color: $blue-primary
+            &::before
+              +transform(scaleX(1))
+          &::before
+            content: ''
+            position: absolute
+            top: auto
+            bottom: 0
+            left: 0
+            width: 100%
+            height: 1px
+            background: $blue-second
+            +transform(scaleX(0))
+            +transition(transform $transition)
+  @media (max-width: 1024px)
+    position: fixed
+    top: 0
+    left: 0
+    width: 200px
+    height: 100vh
+    z-index: 9999
+    +transform(translateX(-100%))
+    +transition(all $transition)
+    visibility: hidden
+    display: block
+    background: $white
+    // +animation(right_to_left ease-in-out 450ms forwards)
+    // @keyframes right_to_left
+    //   from
+    //     +transform(translateX(0))
+    //   to
+    //     +transform(translateX(-100%))
+    &.active
+      visibility: visible
+      // +animation(left_to_right ease-in-out 450ms forwards)
+      +transform(translateX(0))
+      // @keyframes left_to_right
+      //   from
+      //     +transform(translateX(-100%))
+      //   to
+      //     +transform(translateX(0))
+    &::after
+      content: ''
+      position: fixed
+      top: 0
+      // right: 0
+      background: transparent
+      width: calc(100vw - 200px)
+      height: 100vh
+    .menu-second
+      display: none !important

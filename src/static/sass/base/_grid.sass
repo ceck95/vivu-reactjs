@@ -1,0 +1,56 @@
+//settings
+$grid: (container: (width: 1200,gap: 15),columns: (max: 12,gap: 30),breakpoints: (default: xs,sm: 768,md: 992,lg: 1200))
+
+@function map-deep-get($map, $keys...)
+  @each $key in $keys
+    $map: map-get($map, $key)
+  @return $map
+
+$containerWidth: map-deep-get($grid, 'container', 'width')
+$containerGap: map-deep-get($grid, 'container', 'gap')
+$colMax: map-deep-get($grid, 'columns', 'max')
+$colGap: map-deep-get($grid, 'columns', 'gap')
+
+//
+.container
+  max-width: $containerWidth * 1px
+  margin: 0 auto
+
+.container-fluid
+  width: 100%
+
+.container,
+.container-fluid
+  padding-left: $containerGap * 1px
+  padding-right: $containerGap * 1px
+
+.row
+  min-height: 1px
+  margin:
+    left: -($colGap / 2) * 1px
+    right: -($colGap / 2) * 1px
+  &::after
+    content: ''
+    display: table
+    clear: both
+
+[class*="col-"]
+  float: none
+  width: 100%
+  padding:
+    left: ($colGap / 2) * 1px
+    right: ($colGap / 2) * 1px
+
+=column($nameCol)
+  @for $i from 1 through $colMax
+    .col-#{$nameCol}-#{$i}
+      float: left
+      width: (100 * $i) / $colMax * 1%
+
+@each $key, $val in map-get($grid, 'breakpoints')
+  @if ($key == 'default')
+    $colDefault: map-deep-get($grid, 'breakpoints', default)
+    +column($colDefault)
+  @else
+    @media (min-width: $val * 1px)
+      +column($key)

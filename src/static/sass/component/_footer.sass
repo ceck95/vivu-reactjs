@@ -1,0 +1,66 @@
+footer
+  background: $silver
+  border-top: 1px solid rgba($black, 0.1)
+  margin-top: 15px
+  padding-bottom: 8px
+
+.footer-wrap
+  .brand_logo
+    color: $blue-primary
+
+.footer_title
+  display: block
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  margin-bottom: 0.5em
+
+.footer_lists
+  list-style: none
+  .list
+    @extend .footer_title
+    position: relative
+    padding: 0.25em 0
+    margin-bottom: 0
+    color: rgba($black, 1)
+    opacity: 0.8
+    &::after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 1px
+      background: $blue-primary
+      display: block
+      +transform(scaleX(0))
+      +transition(all $transition)
+    &:hover
+      opacity: 1
+      color: $blue-primary
+      &::after
+        +transform(scaleX(1))
+
+.footer_lists-socials
+  li
+    display: inline-block
+    &:not(:first-child)
+      margin-left: 0.5em
+    .fa-facebook
+      color: rgba(#3B5998, 0.7)
+      &:hover
+        color: #3B5998
+    .fa-youtube
+      color: rgba(#CC181E, 0.7)
+      &:hover
+        color: #CC181E
+    .fa-twitter
+      color: rgba(#1A93DD, 0.7)
+      &:hover
+        color: #1A93DD
+
+.copyright
+  font-family: 'courier new'
+  font-size: 12px
+  margin-top: 1em
+  color: rgba($black, 0.6)

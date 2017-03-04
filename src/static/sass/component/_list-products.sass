@@ -1,0 +1,155 @@
+// @Author: Tran Van Nhut <nhutdev>
+// @Date:   2017-03-01T11:28:18+07:00
+// @Email:  tranvannhut4495@gmail.com
+// @Last modified by:   nhutdev
+// @Last modified time: 2017-03-04T10:18:17+07:00
+
+
+
+.main-orther
+  padding-top: 110px
+  @media (max-width: 767px)
+    padding-top: 156px
+
+.title-link
+  padding:
+    top: 0.5em
+    bottom: 0.5em
+  position: relative
+  &::after
+    content: ''
+    height: 1px
+    width: 100%
+    position: absolute
+    bottom: 0
+    left: 0
+    background-color: $silver
+    box-shadow: 0 1px 2px rgba($black, 0.2)
+  .fa
+    font-size: 10px
+  a
+    color: $black
+    &:hover
+      text-decoration: underline
+
+.sidebar-left
+  border: 1px solid $silver
+  padding-bottom: 8px
+  border-top-color: transparent
+  .link-btn
+    border-radius: 2px
+    border: 1px solid $blue-primary
+    width: calc(100% - 16px)
+    margin: auto
+    display: block
+    padding: 4px 0.3em
+    color: $blue-primary
+    text-align: center
+    &:hover
+      background-color: $blue-primary
+      color: $white
+
+.sb-left_title
+  padding: 8px 0.5em
+  border-bottom: 1px solid $silver
+  margin: 0 0 8px
+
+.sb-left_lists
+  .list-link
+    display: block
+    a
+      padding: 4px 0 4px 1em
+      display: block
+      color: $black
+      &:hover
+        background-color: $silver
+        .fa-star-o
+          color: $white
+      .fa-star
+        color: #ffdd00
+      .fa-star-o
+        color: $silver
+    .lists > li > a
+      padding-left: 2em
+      line-height: 14px
+      // overflow: hidden
+      // white-space: nowrap
+      // text-overflow: ellipsis
+  .list-items
+    display: table
+    width: 100%
+    margin-top: 8px
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      bottom: -2px
+      left: 23px
+      width: calc(100% - 16px)
+      height: 1px
+      background: $silver
+    a
+      color: $black
+      &:hover
+        color: $blue-second
+        text-decoration: underline
+    .promotion
+      background: $red
+      color: $white
+      position: relative
+      height: 20px
+      width: 30px
+      display: block
+      text-align: center
+      line-height: 20px
+      margin: 4px 0 4px 10px
+      &::before
+        content: ''
+        position: absolute
+        left: -20px
+        top: 0
+        border:
+          style: solid
+          width: 10px
+          color: transparent $red transparent transparent
+
+.main_lists_title
+  background: $silver
+  padding: 8px 0.5em
+  margin: 0
+
+.main_lists_group-btn
+  clear: both
+  margin: 8px auto 0
+  padding: 8px 0
+  display: table
+  width: 100%
+  button
+    border-color: rgba($black, 0.4)
+    margin-bottom: 8px
+    &:not(:first-child)
+      margin-left: 8px
+    &:hover
+      background: $silver
+
+.pagging-wrap
+  margin: 8px auto
+  .menus
+    list-style: none
+    +displayFlex()
+    +justifyContent(center)
+    li
+      display: inline-block
+      width: 20px
+      height: 20px
+      .menu
+        border: 1px solid transparent
+        color: $blue-primary
+        font-size: 18px
+        display: block
+        text-align: center
+        &.active
+          border-color: rgba($black, 0.4)
+          color: $black
+    &:hover
+      cursor: pointer

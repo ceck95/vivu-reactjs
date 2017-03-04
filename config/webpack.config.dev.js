@@ -1,3 +1,13 @@
+/**
+ * @Author: Tran Van Nhut <nhutdev>
+ * @Date:   2017-02-06T11:35:08+07:00
+ * @Email:  tranvannhut4495@gmail.com
+* @Last modified by:   nhutdev
+* @Last modified time: 2017-02-18T12:51:27+07:00
+ */
+
+
+
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -18,7 +28,7 @@ var publicPath = '/';
 var publicUrl = '';
 // Get environment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
-
+console.log(paths.appSrc);
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -79,17 +89,15 @@ module.exports = {
       'react-native': 'react-native-web'
     }
   },
-  
+
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
-    preLoaders: [
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'eslint',
-        include: paths.appSrc,
-      }
-    ],
+    preLoaders: [{
+      test: /\.(js|jsx)$/,
+      loader: 'eslint',
+      include: paths.appSrc,
+    }],
     loaders: [
       // Default loader: load all assets that are not handled
       // by other loaders with the url loader.
@@ -111,7 +119,8 @@ module.exports = {
           /\.(js|jsx)$/,
           /\.css$/,
           /\.json$/,
-          /\.svg$/
+          /\.svg$/,
+          /\.sass$/
         ],
         loader: 'url',
         query: {
@@ -125,7 +134,7 @@ module.exports = {
         include: paths.appSrc,
         loader: 'babel',
         query: {
-          
+
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
@@ -140,6 +149,11 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style!css?importLoaders=1!postcss'
+      },
+      {
+        test: /\.sass$/,
+        include: paths.appSrc,
+        loaders: ["style", "css", "sass"]
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
@@ -157,7 +171,7 @@ module.exports = {
       }
     ]
   },
-  
+
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [

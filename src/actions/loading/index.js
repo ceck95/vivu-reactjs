@@ -2,17 +2,22 @@
  * @Author: Tran Van Nhut <nhutdev>
  * @Date:   2016-10-17T13:49:49+07:00
  * @Email:  tranvannhut4495@gmail.com
- * @Last modified by:   nhutdev
- * @Last modified time: 2016-10-28T15:33:50+07:00
+* @Last modified by:   nhutdev
+* @Last modified time: 2017-03-01T09:45:24+07:00
  */
 
-
+const type = require('../../const/redux-actions');
 
 let loadActions = {
-  getLoading: function(data) {
+  statusLoadingProductByCategory: (data) => {
     return {
-      type: 'LOADING',
+      type: type.statusLoadingProductByCategory,
       data: data
+    }
+  },
+  statusLoadingCategoryGroup: () => {
+    return {
+      type: type.statusLoadingCategoryGroup
     }
   }
 };

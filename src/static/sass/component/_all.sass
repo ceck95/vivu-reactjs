@@ -1,0 +1,91 @@
+.no-select
+  user-select: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+
+button
+  outline: none
+  background: none
+  border: none
+  cursor: pointer
+  @extend .no-select
+
+.bold
+  font-weight: bold
+
+.small
+  font-weight: 300
+  font-size: 80%
+
+.hidden
+  display: none
+
+ul
+  list-style: none
+a
+  text-decoration: none
+  &:focus,
+  &:active
+    outline: none
+
+h1
+  font-size: 2em
+  margin: 0.67em 0
+
+h2
+  font-size: 1.5em
+  margin: 0.83em 0
+
+h3
+  font-size: 1.17em
+  margin: 1em 0
+
+h4
+  font-size: 1em
+  margin: 1.33em 0
+
+h5
+  font-size: 0.83em
+  margin: 1.67em 0
+
+h6
+  font-size: 0.75em
+  margin: 2.33em 0
+
+body
+  font-family: 'Philosopher', sans-serif
+  font-size: 14px
+
+html
+  font-size: 100%
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
+
+.img-responsive
+  margin: auto
+  max-width: 100%
+
+.clear-fix
+  clear: both
+
+.pull-left
+  float: left
+
+.pull-right
+  float: right
+
+.btn-default
+  background: transparent
+  border: 1px solid $silver
+  padding: 8px 1em
+
+::-webkit-input-placeholder
+  color: rgba($black, 0.4)
+
+::-moz-placeholder
+  color: rgba($black, 0.4)
+//
+::-ms-input-placeholder
+  color: rgba($black, 0.4)

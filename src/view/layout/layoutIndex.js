@@ -3,7 +3,7 @@
 * @Date:   2016-10-17T11:34:33+07:00
 * @Email:  tranvannhut4495@gmail.com
 * @Last modified by:   nhutdev
-* @Last modified time: 2016-12-05T12:32:00+07:00
+* @Last modified time: 2017-03-02T21:27:02+07:00
 */
 
 import React, {Component} from 'react';
@@ -12,20 +12,44 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import actions from '../../actions/index';
 import ReactBase from 'react-base';
+import Components from '../../components/index';
 
 class LayoutIndex extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      dataCategoryGroup: []
+    }
+  }
+
+  componentWillMount() {
+    this.props.actions.getCategoryGroup();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.loadingPage.loadingCategoryGroup) {
+      if (nextProps.categoryGroup.length > 0) {
+        this.setState({dataCategoryGroup: nextProps.categoryGroup});
+      }
+    }
   }
 
   render() {
+    if (this.state.dataCategoryGroup.length > 0) {
+      return (
+        <div>
+          <Components.header/> {this.props.children}
+          <Components.footer/>
+        </div>
+      )
+    }
+
     return (
-      <Grid>
-        {this.props.children}
-      </Grid>
+      <div>Loading</div>
     )
   }
+
 }
 
 let mapRedux = new ReactBase.helpers.mapRedux({actions: actions, bindActionCreators: bindActionCreators});

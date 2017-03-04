@@ -3,12 +3,11 @@
 * @Date:   2016-10-17T10:56:36+07:00
 * @Email:  tranvannhut4495@gmail.com
 * @Last modified by:   nhutdev
-* @Last modified time: 2016-12-05T14:25:43+07:00
+* @Last modified time: 2017-02-18T11:18:50+07:00
 */
 
 import React from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
 import reducers from './reducers/index';
 import routers from './routers/index';

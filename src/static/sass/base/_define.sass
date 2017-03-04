@@ -1,0 +1,54 @@
+$blue-primary: #0980AA
+
+$blue-second: #105666
+
+$white: #fff
+$black: #080808
+$red: #e22222
+$silver: #ececec
+$shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px
+$transition: 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms
+//font logo
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash')
+// font nomarl
+@import url('https://fonts.googleapis.com/css?family=Philosopher')
+
+*, *::before, *::after
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+=displayFlex()
+  display: flex
+  display: -webkit-flex
+
+=alignItems($param)
+  align-items: $param
+  -webkit-align-items: $param
+
+=justifyContent($param)
+  justify-content: $param
+  -webkit-justify-content: $param
+
+=transform($param)
+  transform: $param
+  -webkit-transform: $param
+  -moz-transform: $param
+  -ms-transform: $param
+  -o-transform: $param
+
+=transition($param)
+  transition: $param
+  -webkit-transition: $param
+  -moz-transition: $param
+  -ms-transition: $param
+  -o-transition: $param
+
+=animation($param)
+  animation: $param
+  -moz-animation: $param
+  -webkit-animation: $param
+  -ms-animation: $param
+  -o-animation: $param

@@ -3,10 +3,10 @@
 * @Date:   2016-12-05T12:08:17+07:00
 * @Email:  tranvannhut4495@gmail.com
 * @Last modified by:   nhutdev
-* @Last modified time: 2016-12-05T14:27:44+07:00
+* @Last modified time: 2017-03-03T09:54:21+07:00
 */
 
-import Body from '../components/body/index';
+import Components from '../components/index';
 
 import Layout from '../view/layout/index';
 import ViewIndex from '../view/index';
@@ -25,7 +25,8 @@ const requireAuthentication = ReactBase.AuthWrapper.UserAuthWrapper({
 module.exports = (
   <Route path='/' component={ViewIndex}>
     <Route component={Layout.Index.default}>
-      <IndexRoute component={Body}/>
+      <IndexRoute component={Components.web}/>
+      <Route path='/:urlKeyCategoryGroup' component={Components.listProduct}/>
     </Route>
   </Route>
 );
