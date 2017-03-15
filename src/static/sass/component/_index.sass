@@ -1,3 +1,11 @@
+// @Author: Tran Van Nhut <root>
+// @Date:   2017-03-09T20:01:24+07:00
+// @Email:  tranvannhut4495@gmail.com
+// @Last modified by:   root
+// @Last modified time: 2017-03-09T20:11:24+07:00
+
+
+
 .main_items
   // display: table
   clear: both
@@ -76,6 +84,19 @@
       cursor: default
       &:hover
         background: $white
+
+.tabs-wrap-secondary
+  .tabs
+    border-bottom-color: rgba($black,0.3)
+    .tabs_btn
+      border-color: transparent
+      &:hover
+        background: transparent
+        color: $blue-second
+      &.active
+        color: $blue-primary
+        border-bottom-color: $blue-primary
+
 .tabs-content
   margin: 1em 0 0
   display: table
@@ -100,22 +121,6 @@
   @media (max-width: 1024px)
     border-color: rgba($black, 0.2)
     box-shadow: $shadow
-  .link-img
-    display: block
-    img
-      width: 100%
-  .link-text
-    color: $black
-    &:hover
-      color: $blue-primary
-  .price-current
-    margin: 0.25em 0
-    span.promotion
-      background: $red
-      color: $white
-      padding: 0.1em 0.25em
-  .price
-    text-decoration: line-through
   .add-to-cart
     width: calc(100% - 16px)
     height: 30px
@@ -134,43 +139,49 @@
       border-color: $blue-primary
       box-shadow: $shadow
       display: block
-    &.clicked
-      &::before
-        content: ''
-        position: absolute
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
-        width: 100%
-        height: 100%
-        background-color: rgba($white, 0.8)
-      &::after
-        content: ''
-        position: absolute
-        top: 0
-        left: calc(50% - 15px)
-        width: 30px
-        height: 30px
-        background: url(../images/loop.svg) no-repeat center center
-        background-size: 24px
-        +animation(spin_loop 2000ms ease-in-out 0ms infinite)
-        @keyframes spin_loop
-          from
-            +transform(rotate(0))
-          to
-            +transform(rotate(-360deg))
-        @-webkit-keyframes spin_loop
-          from
-            +transform(rotate(0))
-          to
-            +transform(rotate(-360deg))
     @media (max-width: 1024px)
       background: $blue-primary
       color: $white
       border-color: $blue-primary
       box-shadow: $shadow
       display: block
+
+.btn-loading
+  position: relative
+  &.clicked
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      width: 100%
+      height: 100%
+      background-color: rgba($white, 0.8)
+      z-index: 10
+    &::after
+      content: ''
+      position: absolute
+      top: 0
+      left: calc(50% - 15px)
+      width: 30px
+      height: 30px
+      background: url(../images/loop.svg) no-repeat center center
+      background-size: 24px
+      z-index: 11
+      +animation(spin_loop 2000ms ease-in-out 0ms infinite)
+
+@keyframes spin_loop
+  from
+    +transform(rotate(0))
+  to
+    +transform(rotate(-360deg))
+@-webkit-keyframes spin_loop
+  from
+    +transform(rotate(0))
+  to
+    +transform(rotate(-360deg))
 
 @keyframes fadeIn
   from
@@ -183,6 +194,22 @@
   to
     opacity: 1
 
+.link-img
+  display: block
+  img
+    width: 100%
+.link-text
+  color: $black
+  &:hover
+    color: $blue-primary
+.price-current
+  margin: 0.25em 0
+  span.promotion
+    background: $red
+    color: $white
+    padding: 0.1em 0.25em
+.price
+  text-decoration: line-through
 //sidebar right
 .item_sidebar
   box-shadow: $shadow
@@ -199,7 +226,7 @@
     margin-top: 0.5em
     &:hover
       color: $white
-      background: $blue-second
+      background: $blue-primary
 
 .item_sidebar_wrap
   ul

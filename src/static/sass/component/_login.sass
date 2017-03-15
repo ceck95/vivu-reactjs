@@ -1,4 +1,4 @@
-#popup-login
+.modal
   position: fixed
   top: 0
   right: 0
@@ -6,42 +6,57 @@
   left: 0
   width: 100vw
   height: 100vh
-  z-index: 9999
-  background: rgba($silver, 0.9)
+  z-index: 999
+  background: rgba($black, 0.37)
 
-#popup-login_btn-close
+.modal_wrap
+  position: relative
+
+.modal_btn-close
   width: 40px
   height: 40px
-  position: fixed
-  top: 0
-  right: 0
-  background: rgba($silver, 1)
+  position: absolute
+  top: -40px
+  right: -35px
+  background: rgba($white, 1)
   border-radius: 50%
   font-size: 16px
   &:hover
-    background: $white
+    background: rgba($black,.4)
+    box-shadow: $shadow
     .fa
       font-size: 18px
-      color: $black
+      color: $white
+  @media (max-width: 992px)
+    top: 0
+    right: 0
 
-.popup-login_wrap
+.popup_wrap
   position: fixed
   top: 50%
   left: 50%
   min-width: 300px
   +transform(translate(-50%, -50%))
-  box-shadow: $shadow
+  box-shadow: rgba($white, 0.11765) 0px 1px 6px, rgba($white, 0.11765) 0px 1px 4px
   border: 1px solid rgba($black, 0.1)
   background: rgba($white,1)
   padding-bottom: 8px
+  max-height: 100vh
+  @media (max-width: 992px)
+    overflow-x: hidden
+    overflow-y: scroll
   hr
     margin: 1em 0
     border-bottom: 0
+  a
+    color: $blue-primary
+    &:hover
+      text-decoration: underline
 
 .login_title
   color: $black
   display: block
-  text-align: center
+  // text-align: center
 
 .login_items
   position: relative
@@ -58,7 +73,7 @@
     padding-left: 20px
     color: $black
     &:focus ~ .line
-      +transform(scaleX(1))
+      width: 100%
     &::-webkit-input-placeholder
       color: rgba($black, 0.6) !important
       font-style: italic
@@ -80,13 +95,25 @@
     position: absolute
     bottom: -1px
     left: 0
-    width: 100%
+    width: 0
     height: 1px
     display: block
     z-index: 2
     background: $blue-primary
-    +transform(scaleX(0))
-    +transition(all $transition)
+    +transition(width $transition)
+
+.require-wrap
+  padding-bottom: 16px
+  position: relative
+  .require
+    position: absolute
+    bottom: 0
+    left: 15px
+    display: none
+    &.error
+      color: $red
+    &.required
+      display: block
 
 .remember-wrap
   @extend .no-select
@@ -99,25 +126,42 @@
   input[type="checkbox"]
     cursor: pointer
 
-.forgot-wrap
-  a
-    color: $black
-    text-align: right
-    &:hover
-      text-decoration: underline
-
 .btn-login
   width: 100%
   height: 40px
   margin-top: 15px
-  margin-bottom: 15px
-  // border: 1px solid $white
-  color: $white
-  background: $blue-primary
+  color: $black
+  background: #ffde00
   font-size: 15px
+  position: relative
+  div
+    position: relative
+    z-index: 2
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    width: 100%
+    height: 100%
+    background: transparent
+    z-index: 1
   &:hover
-    background: $blue-second
-    border-color: transparent
+    &::before
+      background: rgba($black, 0.2)
+
+.btn-login-fb
+  background: #3B5998
+  color: $white
+  margin-top: 8px
+  margin-bottom: 0
+
+.btn-login-gg
+  background: $red
+  color: $white
+  margin-top: 8px
 
 .login-socials
   +displayFlex()
@@ -140,3 +184,120 @@
     color: $blue-primary
     &:hover
       color: $blue-second
+
+//signin
+.signin_items
+  margin-top: 10px
+
+.signin_input-text
+  padding: 0.6em
+  width: 100%
+  border: none
+  border: 1px solid rgba($black, .3)
+  border-radius: 4px
+  &:focus
+    outline-color: $blue-primary
+
+.sex-wrap
+  +displayFlex()
+  +alignItems(center)
+  label
+    +displayFlex()
+    +alignItems(center)
+    margin-right: 2em
+    width: 50px
+    cursor: pointer
+  .check
+    width: 20px
+    height: 20px
+    margin-right: 4px
+    display: block
+    border: 1px solid $blue-primary
+    +transition(all $transition)
+  input[type="radio"]
+    position: absolute
+    visibility: hidden
+    &:checked ~ label > .check
+      background: $blue-primary
+
+.signin_select
+  padding: 8px 0.6em
+  cursor: pointer
+  &:not(:first-child)
+    margin-left: 4px
+
+.checkbox_mail-wrap
+  input[type="checkbox"]
+    position: absolute
+    visibility: hidden
+    &:checked ~ label > .select
+      background: $blue-second
+  .text
+    +displayFlex()
+    +alignItems(center)
+    cursor: pointer
+    margin-bottom: 10px
+    .select
+      width: 20px
+      height: 20px
+      display: block
+      border: 1px solid $blue-second
+      margin-right: 4px
+      +transition(all $transition)
+
+.btn_submit-signin
+  margin-top: 15px
+  width: 100%
+  background: $blue-primary
+  color: $white
+  text-align: center
+  padding: 8px 0
+  margin-bottom: 15px
+  position: relative
+  border-radius: 2px
+  div
+    z-index: 2
+    position: relative
+  &:hover
+    box-shadow: $shadow
+    &::before
+      background: rgba($black, 0.11)
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    width: 100%
+    height: 100%
+    background: transparent
+    z-index: 1
+    +transition(background $transition)
+
+.signin_social
+  .title
+    margin: 0
+
+.signin_social_btn-fb
+  width: 100%
+  position: relative
+  height: 30px
+  text-align: center
+  background: #3B5998
+  color: $white
+  margin-top: 15px
+  padding-left: 24px
+  span
+    background: rgba($black, 0.2)
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 20px
+    +displayFlex()
+    +alignItems(center)
+    +justifyContent(center)
+    text-align: center
+  .fa
+    // margin-right: 4px

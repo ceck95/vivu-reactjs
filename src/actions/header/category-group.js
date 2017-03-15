@@ -3,7 +3,7 @@
  * @Date:   2016-10-17T13:49:49+07:00
  * @Email:  tranvannhut4495@gmail.com
 * @Last modified by:   nhutdev
-* @Last modified time: 2017-03-01T12:16:44+07:00
+* @Last modified time: 2017-03-05T14:05:39+07:00
  */
 
 const type = require('../../const/redux-actions');

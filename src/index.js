@@ -3,7 +3,7 @@
 * @Date:   2016-10-17T10:56:36+07:00
 * @Email:  tranvannhut4495@gmail.com
 * @Last modified by:   nhutdev
-* @Last modified time: 2017-02-18T11:18:50+07:00
+* @Last modified time: 2017-03-11T11:55:06+07:00
 */
 
 import React from 'react';
@@ -20,6 +20,9 @@ import {Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-rout
 import {syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux';
 import thunk from 'redux-thunk';
 
+import config from './config/index';
+import actions from './actions/index';
+
 class Container {
 
   constructor() {
@@ -30,9 +33,10 @@ class Container {
       routers: routers,
       elementById: 'root',
       authenticate: {
-        status: false,
-        keyToken: 'accessToken',
-        // actionsBeforeRender: actionsLogin.getProfile,
+        status: true,
+        statusActionLoginFail: false,
+        keyToken: config.login.keyAccessToken,
+        actionsBeforeRender: actions.profile,
         // actionsLoginFail: authActions.loadLogin({loadLogin: true})
       }
     }, compose, combineReducers, createStore, applyMiddleware, syncHistoryWithStore, routerReducer, routerMiddleware, thunk, hashHistory, browserHistory);

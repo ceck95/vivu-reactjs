@@ -2,8 +2,8 @@
 * @Author: Tran Van Nhut <nhutdev>
 * @Date:   2016-10-17T11:34:52+07:00
 * @Email:  tranvannhut4495@gmail.com
-* @Last modified by:   nhutdev
-* @Last modified time: 2017-03-03T20:59:56+07:00
+* @Last modified by:   root
+* @Last modified time: 2017-03-14T17:45:31+07:00
 */
 
 import React, {Component} from 'react'
@@ -29,13 +29,17 @@ import FormLogin from './form-login';
 import Cart from './cart';
 import FormSearch from './form-search';
 import ListCategoryProduct from './list-category-product';
+import Notify from '../body/common/notify';
 
 class Header extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      headerDisplay: ''
+      headerDisplay: '',
+      dataNotify: {},
+      listNotify: [],
+      keyNotify: 0
     }
   }
 
@@ -111,6 +115,17 @@ class Header extends Component {
     let pathName = nextProps.routing.locationBeforeTransitions.pathname,
       lastPathName = this.props.routing.locationBeforeTransitions.pathname;
 
+    if (Object.keys(nextProps.dataNotify).length > 0 && nextProps.dataNotify.show) {
+      let listNotify = this.state.listNotify,
+        key = 0;
+      if (this.state.keyNotify === 0) {
+        key = this.state.keyNotify;
+      }
+      key = this.state.keyNotify + 1;
+      listNotify.push(<Notify key={key} actions={this.props.actions} dataNotify={nextProps.dataNotify}/>);
+      this.setState({listNotify: listNotify, keyNotify: key});
+    }
+
     if (pathName !== lastPathName) {
       let data = {};
       if (pathName !== '/') {
@@ -150,7 +165,7 @@ class Header extends Component {
               <FormSearch stateCategorySearch={this.props.searchMenuCategory} dataCategoryGroup={this.props.categoryGroup} actions={this.props.actions}/>
             </div>
             <div className="col-xs-9 col-sm-6 col-md-4 header_content_right">
-              <FormLogin/>
+              <FormLogin actions={this.props.actions} statePopup={this.props.statePopup} dataLogin={this.props.dataLogin} dataAddress={this.props.dataAddress}/>
               <Cart/>
             </div>
           </div>
@@ -162,6 +177,9 @@ class Header extends Component {
           </button>
           <ListCategoryProduct dataCategoryGroup={this.props.categoryGroup} stateCategory={this.props.menuCategory}/>
         </div>
+        {this.state.listNotify.length > 0
+          ? this.state.listNotify
+          : ''}
       </header>
     )
   }

@@ -2,8 +2,8 @@
 * @Author: Tran Van Nhut <nhutdev>
 * @Date:   2017-02-18T13:24:37+07:00
 * @Email:  tranvannhut4495@gmail.com
-* @Last modified by:   nhutdev
-* @Last modified time: 2017-03-02T21:55:22+07:00
+* @Last modified by:   root
+* @Last modified time: 2017-03-09T16:54:33+07:00
 */
 
 import React, {Component} from 'react';
@@ -34,12 +34,14 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    if (this.props.categoryGroup.length > 0) {
+    if (this.props.categoryGroup.length > 0 && !this.props.menuCategory.loadedListProductHome) {
       let listCategoryId = [];
       this.props.categoryGroup.forEach(e => {
         listCategoryId.push(e.id);
       });
-      this.props.actions.getProductByCategoryGroup(listCategoryId.join(','), this.props.categoryGroup, this.props.loadingPage);
+      this.props.actions.getProductByCategoryGroup(listCategoryId.join(','), this.props.categoryGroup, this.props.loadingPage, this.props.menuCategory);
+    } else {
+      this.setState({dataCategoryGroup: this.props.categoryGroup})
     }
 
   }

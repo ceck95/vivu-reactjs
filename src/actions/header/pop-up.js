@@ -3,23 +3,23 @@
  * @Date:   2016-10-17T13:49:49+07:00
  * @Email:  tranvannhut4495@gmail.com
 * @Last modified by:   nhutdev
-* @Last modified time: 2017-03-06T11:11:18+07:00
+* @Last modified time: 2017-03-12T10:04:47+07:00
  */
 
 const type = require('../../const/redux-actions');
-let menuCategoryActions = {
-  setShowMenuCategory: (data) => {
+let popUpActions = {
+  setStatePopupLogin: (data) => {
     return {
-      type: type.showMenuCategory,
+      type: type.setStatePopupLogin,
       data: data
     }
   },
-  setLoadedListProductHome: (data) => {
+  setStatePopupSignin: (data) => {
     return {
-      type: type.setLoadedListProductHome,
+      type: type.setStatePopupSignin,
       data: data
     }
   }
 };
 
-export default menuCategoryActions;
+export default popUpActions;

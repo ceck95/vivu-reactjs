@@ -3,7 +3,7 @@
 * @Date:   2017-02-18T13:32:12+07:00
 * @Email:  tranvannhut4495@gmail.com
 * @Last modified by:   nhutdev
-* @Last modified time: 2017-03-02T22:00:17+07:00
+* @Last modified time: 2017-03-05T14:09:19+07:00
 */
 
 import React, {Component} from 'react';
@@ -32,7 +32,7 @@ class BodyListProduct extends Component {
             <ListTab dataItemCategory={this.props.dataItemCategory}/>
           </div>
         </div>
-        <BodyRight/>
+        <BodyRight dataItemCategory={this.props.dataItemCategory}/>
       </div>
     )
   }

@@ -1,12 +1,25 @@
 {
   "api": {
-    "baseURL": "http://localhost:3000",
+    "baseURL": "http://vivu.dev/api",
     "clientId": "VmpGamQyVkhTWGROVm1oV1lUSm9jVlV3WXpSUFVUMDk="
   },
   "cdn": {
     "link": "http://cdn.vivu.dev"
   },
   "default": {
-    "maxLengthPagination": 20
+    "maxLengthPagination": 20,
+    "limitListProductHome": 3,
+    "limitListProductRightHome": 1,
+    "effectLoadListProduct": true,
+    "distanceYear": 120
+  },
+  "sercurity": {
+    "passwordLength": 5
+  },
+  "i18n": {
+    "country": "VN"
+  },
+  "login": {
+    "keyAccessToken": "accessToken"
   }
 }

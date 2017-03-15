@@ -2,8 +2,8 @@
  * @Author: Tran Van Nhut <nhutdev>
  * @Date:   2017-03-02T21:47:11+07:00
  * @Email:  tranvannhut4495@gmail.com
-* @Last modified by:   nhutdev
-* @Last modified time: 2017-03-03T12:50:04+07:00
+* @Last modified by:   root
+* @Last modified time: 2017-03-07T22:19:44+07:00
  */
 
 import React, {Component} from 'react';
@@ -13,19 +13,51 @@ class LeftMenuListProduct extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      itemMenuCurrent: {}
+    }
+  }
+
+  componentWillMount() {
+    this.setState({itemMenuCurrent: this.props.itemMenuCurrent});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.urlKeyCategoryGroup !== nextProps.params.urlKeyCategoryGroup || this.props.params.urlKeyCategory !== nextProps.params.urlKeyCategory) {
+      this.setState({itemMenuCurrent: nextProps.itemMenuCurrent});
+    }
   }
 
   render() {
-    let listCategoryGroup = [];
+    let listCategoryGroup = [],
+      dataCategoryGroup = this.props.dataCategoryGroup,
+      categoryGroupCurrent = null;
+    for (let i in dataCategoryGroup) {
+      if (dataCategoryGroup[i].urlKey === this.state.itemMenuCurrent.urlKey) {
+        categoryGroupCurrent = dataCategoryGroup[i].id
+        break;
+      } else {
+        for (let y in dataCategoryGroup[i].categories) {
+          if (dataCategoryGroup[i].categories[y].urlKey === this.state.itemMenuCurrent.urlKey) {
+            categoryGroupCurrent = dataCategoryGroup[i].id
+            break;
+          }
+        }
+      }
+    }
+
     this.props.dataCategoryGroup.forEach((e, a) => {
       let listCategory = [];
-      e.categories.forEach((i, b) => {
-        listCategory.push(
-          <li key={b}>
-            <Link to={`/${e.urlKey}/${i.urlKey}`}>{i.name}</Link>
-          </li>
-        )
-      });
+      if (e.id === categoryGroupCurrent) {
+        e.categories.forEach((i, b) => {
+          listCategory.push(
+            <li key={b}>
+              <Link to={`/${e.urlKey}/${i.urlKey}`}>{i.name}</Link>
+            </li>
+          )
+        });
+      }
+
       listCategoryGroup.push(
         <li className="list-link" key={a}>
           <Link className="bold" to={`/${e.urlKey}`}>{e.name}</Link>
