@@ -1,0 +1,118 @@
+.cart-title
+  position: relative
+  .titles
+    margin-top: 1em
+
+.cart-name
+  margin-top: 0 !important
+
+.cart-input-wrap
+  position: relative
+
+.cart-input-number
+  width: 100%
+  padding: 0.5em
+
+.cart-input-wrap_icon
+  margin-top: 4px
+  padding: 4px 8px
+  +transition(all $transition)
+  // display: none
+  &:hover
+    background: $silver
+    box-shadow: $shadow
+  &.check
+    color: rgb(30,140,130)
+  &.error
+    color: $red
+
+
+.cart_item
+  padding-top: 1em
+  padding-bottom: 1em
+  position: relative
+
+.cart_img
+  display: block
+  margin: auto
+
+.cart_hr
+  width: calc(100% - 30px)
+  margin: 0 15px
+  background: rgba($black, .3)
+  border: none
+  height: 1px
+  float: left
+
+.cart_item_hr
+  position: absolute
+  bottom: 0
+.box
+  border-radius: 4px
+  box-shadow: $shadow
+  float: left
+  width: 100%
+  margin-top: 1em
+
+.box-padding
+  padding-top: 15px
+  padding-bottom: 15px
+
+.box_hr
+  margin: 15px
+  background: $red
+  position: relative !important
+
+.cart-btn_back
+  background: #fff
+  color: $black
+  border-radius: 2px
+  border: 1px solid rgba($black, .4)
+  padding: 0.5em 1em
+  float: left
+  margin-top: 1em
+  .fa
+    margin-right: 0.5em
+  &:hover
+    box-shadow: $shadow
+
+.cart_box-price
+  font-weight: bold
+  text-align: right
+  &.big
+    font-size: 1.3em
+  &.red
+    color: $red
+
+.cart_box-small
+  font-style: italic
+  text-align: right
+
+.btn-cart-continue
+  width: 100%
+  margin: 1em 0
+  background: $red
+  color: $white
+  border-radius: 4px
+  height: 40px
+  position: relative
+  div
+    position: relative
+  &::before
+    content: ''
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgba($black, .1)
+    display: none
+  &:hover
+    &::before
+      display: block
+
+.margin-top-xs
+  @media (max-width: 767px)
+    margin-top: 1em

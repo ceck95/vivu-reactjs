@@ -1,3 +1,11 @@
+// @Author: Tran Van Nhut <root>
+// @Date:   2017-03-15T10:29:32+07:00
+// @Email:  tranvannhut4495@gmail.com
+// @Last modified by:   root
+// @Last modified time: 2017-03-15T10:45:01+07:00
+
+
+
 .modal
   position: fixed
   top: 0
@@ -16,8 +24,10 @@
   width: 40px
   height: 40px
   position: absolute
-  top: -40px
-  right: -35px
+  // top: -40px
+  // right: -35px
+  top: 0
+  right: 0
   background: rgba($white, 1)
   border-radius: 50%
   font-size: 16px
@@ -42,9 +52,9 @@
   background: rgba($white,1)
   padding-bottom: 8px
   max-height: 100vh
-  @media (max-width: 992px)
-    overflow-x: hidden
-    overflow-y: scroll
+  // @media (max-width: 992px)
+  overflow-x: hidden
+  overflow-y: hidden
   hr
     margin: 1em 0
     border-bottom: 0
@@ -197,7 +207,9 @@
   border-radius: 4px
   &:focus
     outline-color: $blue-primary
-
+  &.textarea
+    height: 40px
+    resize: none
 .sex-wrap
   +displayFlex()
   +alignItems(center)
@@ -205,7 +217,7 @@
     +displayFlex()
     +alignItems(center)
     margin-right: 2em
-    width: 50px
+    min-width: 50px
     cursor: pointer
   .check
     width: 20px
@@ -223,6 +235,7 @@
 .signin_select
   padding: 8px 0.6em
   cursor: pointer
+  background: $white
   &:not(:first-child)
     margin-left: 4px
 
@@ -301,3 +314,8 @@
     text-align: center
   .fa
     // margin-right: 4px
+
+.signin_select-full
+  background: $white
+  width: 100%
+  padding: 0.5em

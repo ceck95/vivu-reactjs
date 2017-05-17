@@ -1,8 +1,8 @@
 // @Author: Tran Van Nhut <root>
-// @Date:   2017-03-14T13:41:14+07:00
+// @Date:   2017-03-10T22:59:19+07:00
 // @Email:  tranvannhut4495@gmail.com
 // @Last modified by:   root
-// @Last modified time: 2017-03-14T13:42:14+07:00
+// @Last modified time: 2017-03-15T10:38:25+07:00
 
 
 
@@ -19,22 +19,12 @@
     color: transparent
     size: contain
     position: center center
-  border: 1px solid rgba($black, 1)
+  // border: 1px solid rgba($black, 1)
   padding: 2px
-  img
+  .img-detail
+    width: calc(100% - 80px)
     display: block
     cursor: pointer
-    // &:hover ~ .detail-image_mouse
-      // display: block
-
-// .detail-image_mouse
-//   position: absolute
-//   display: none
-//   width: 100px
-//   height: 100px
-//   border: 1px solid rgba($black, 0.6)
-//   background: rgba($black, 0.3)
-//   box-shadow: $shadow
 
 .detail-image_zoom
   width: 400px
@@ -47,10 +37,12 @@
   display: none
   +transform(translate(100%, 0))
   background:
-    // image: url(../images/book.jpg)
+    image: url(../images/book.jpg)
     size: 1000px
     position: -20px -30px
     repeat: no-repeat
+  @media (max-width: 1024px)
+    display: none !important
 
 .detail-img_group-btn
   margin-top: 30px
@@ -88,7 +80,8 @@
 
 .btn-add-cart
   border-radius: 3px
-  color: $white
+  margin-left: 1%
+  color: $white !important
   background: $red
   height: 40px
   padding-left: 40px
@@ -177,7 +170,6 @@ hr.margin-top-bottom
   +transition(all $transition)
 
 .slider
-  // background: $black
   float: left
   width: 300px
   height: 380px
@@ -195,10 +187,10 @@ hr.margin-top-bottom
     +transform(rotate(360deg))
 
 .slider_btn-next
-  right: 0
+  right: 8px
 
 .slider_btn-prev
-  left: 0
+  left: 8px
 
 .slider_link
   display: block
@@ -221,3 +213,34 @@ hr.margin-top-bottom
 
 .slider_link_text
   padding-left: 1em
+
+.slider-col-detail
+  width: 80px
+  margin-top: 15px
+
+.slider-col
+  height: 200px
+  position: relative
+  .slider_btn
+    width: 30px
+    height: 30px
+    left: 25px
+    background-color: transparent
+  .slider_btn-up
+    top: -30px
+  .slider_btn-down
+    top: auto
+    bottom: -40px
+
+.slider-col_wrap
+  height: 100%
+  overflow: hidden
+
+.slider-col_sliders
+  +transition(all $transition)
+
+.slider-detail_img
+  padding: 4px
+  border: 1px solid rgba($black, .1)
+  img
+    cursor: pointer

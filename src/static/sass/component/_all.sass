@@ -22,10 +22,15 @@ button
 .hidden
   display: none
 
+.hidden-xs
+  @media (max-width: 767px)
+    display: none
+
 ul
   list-style: none
 a
   text-decoration: none
+  color: $blue-primary
   &:focus,
   &:active
     outline: none

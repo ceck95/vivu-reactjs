@@ -7,15 +7,21 @@
  */
 
 const type = require('../../const/redux-actions');
+import { helpers } from 'react-base';
 
 module.exports = (loadProduct = {
-  loadOfRouter: null
-}, action) => {
+    loadOfRouter: null,
+    loadFilterProduct: null
+  } , action) => {
   switch (action.type) {
-    case type.statusLoadProduct:
-      {
-        return action.data;
-      }
+    case type.statusLoadProduct: {
+      return action.data;
+    }
+    case type.setLoadFilterProduct: {
+      return helpers.Data.assign(loadProduct, {
+        loadFilterProduct: action.status
+      });
+    }
     default:
       return loadProduct;
   }

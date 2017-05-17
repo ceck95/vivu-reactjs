@@ -4,22 +4,50 @@
     "clientId": "VmpGamQyVkhTWGROVm1oV1lUSm9jVlV3WXpSUFVUMDk="
   },
   "cdn": {
-    "link": "http://cdn.vivu.dev"
+    "link": "http://cdn.vivu.dev/"
   },
   "default": {
-    "maxLengthPagination": 20,
+    "pageSizeFilter": 1,
+    "maxLengthPagination": 3,
     "limitListProductHome": 3,
-    "limitListProductRightHome": 1,
-    "effectLoadListProduct": true,
-    "distanceYear": 120
+    "limitListProductRightHome": 3,
+    "effectLoadListProduct": false,
+    "distanceYear": 120,
+    "countItemSlideHeaderInfoOfPageDetail": 4,
+    "limitListProductOfPageDetail": 5,
+    "maxQuantity": 1000,
+    "defaultActiveTabCustomerInfo": "user",
+    "filterItemPrice": 5,
+    "filterItemPriceDistance": 10000000
   },
-  "sercurity": {
+  "router": {
+    "search": {
+      "url": "search?q=",
+      "key": "q"
+    }
+  },
+  "security": {
     "passwordLength": 5
   },
   "i18n": {
     "country": "VN"
   },
   "login": {
-    "keyAccessToken": "accessToken"
+    "keyAccessToken": "accessToken",
+    "redirectQueryParamName": "required"
+  },
+  "localStorage": {
+    "keyQuote": "quoteId"
+  },
+  "typeAddress": {
+    "home": "CUSTOMER_HOME",
+    "company": "CUSTOMER_COMPANY"
+  },
+  "orderStatus": {
+    "new": 0,
+    "accepted": 1,
+    "shipping": 2,
+    "completed": 5,
+    "cancel": 6
   }
 }

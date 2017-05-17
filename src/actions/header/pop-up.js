@@ -7,6 +7,8 @@
  */
 
 const type = require('../../const/redux-actions');
+import {push} from 'react-router-redux';
+
 let popUpActions = {
   setStatePopupLogin: (data) => {
     return {

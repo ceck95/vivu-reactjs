@@ -1,0 +1,120 @@
+.customer_item
+  a
+    display: block
+    padding: 8px
+    color: $black
+    .fa
+      margin-right: 1em
+    &:hover
+      background: $silver
+    &.active
+      background: $silver
+
+.customer_item-flex
+  +displayFlex()
+  +alignItems(center)
+  margin: 8px 0
+  .customer_item_avatar
+    margin: 0 !important
+
+.customer_item_notify
+  background: $red
+  padding: 0 4px
+  border-radius: 50%
+  color: $white
+  margin-left: 0.25em
+
+.customer_item_avatar
+  display: inline-block
+  width: 60px
+  height: 60px
+  border-radius: 50%
+
+.customer_item_username
+  display: inline-block
+  span
+    display: inline-block
+    font-size: 1.7em
+    font-weight: 600
+
+.customer_content
+  border: 1px solid rgba($black, .1)
+  box-shadow: $shadow
+  padding: 15px
+  width: 100%
+
+.tbl-default
+  table-layout: fixed
+  width: 100%
+  border-collapse: collapse
+
+.tbl-hover
+  tbody
+    tr:hover
+      background: rgba(30, 140, 130, .1) 
+
+.tbl-orders
+  thead
+    tr
+      border-color: transparent
+      &:hover
+        background: transparent
+      td:first-child
+        color: $black
+  tr
+    border-top: 1px solid $silver
+    td
+      padding: 8px
+      &.product
+        min-width: 300px
+        width: 300px
+      &:not(.product)
+        width: 100px
+      &:first-child
+        color: $blue-primary
+
+.font-normal
+  font-weight: normal
+  width: 100%
+  .text
+    font-size: 14px
+    text-align: right
+
+.m-b-15
+  margin-bottom: 15px
+
+.detail-box
+  background: $silver
+  padding: 8px
+  box-shadow: $shadow
+  h4
+    margin-top: 0
+
+.hr-clear-fix
+  background: $silver
+  height: 2px
+  width: 100%
+  margin: 15px 0
+
+.tbl-img
+  max-width: 100px
+  float: left
+
+.link-underline:hover
+  text-decoration: underline
+
+.item-center
+  display: table
+  width: 100% !important
+  *
+    display: table-cell
+    vertical-align: middle
+
+.red
+  color: $red
+
+.m-b-8
+  margin-bottom: 8px
+.link
+ &:hover
+  cursor: pointer

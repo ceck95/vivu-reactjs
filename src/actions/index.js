@@ -2,8 +2,8 @@
  * @Author: Tran Van Nhut <nhutdev>
  * @Date:   2016-10-17T11:59:01+07:00
  * @Email:  tranvannhut4495@gmail.com
-* @Last modified by:   root
-* @Last modified time: 2017-03-14T17:39:38+07:00
+ * @Last modified by:   nhutdev
+ * @Last modified time: 2017-03-22T16:37:05+07:00
  */
 
 'use strict';
@@ -20,7 +20,33 @@ import popUpActions from './header/pop-up';
 import apiLoginActions from './api/login';
 import notifyActions from './header/notify';
 import apiAddressActions from './api/address';
+import addressActions from './address/data';
+import detailProductActions from './detail-product/data';
+import apiDetailProductActions from './api/detail-product';
+import imageZoomProductDetailActions from './detail-product/image-zoom';
+import apiQuoteActions from './api/quote';
+import apiQuoteItemActions from './api/quote-item';
+import quoteItemActions from './quote/cart';
+import quoteActions from './quote/data';
+import loginActions from './login/index';
+import checkoutActions from './checkout/data';
+import checkOrderActions from './checkout/check';
+import orderActionsApi from './api/order';
+import orderActions from './order/data';
+import productFilterActions from './product/filter';
 
-let actions = Object.assign(loadingActions, searchMenuCategoryActions, menuCategoryActions, apiCategoryGroupActions, categoryGroupActions, apiProductActions, paginateActions, loadProductActions, popUpActions, apiLoginActions, notifyActions, apiAddressActions);
+let actions = Object.assign(loadingActions, searchMenuCategoryActions,
+  menuCategoryActions, apiCategoryGroupActions,
+  categoryGroupActions, apiProductActions,
+  paginateActions, loadProductActions,
+  popUpActions, apiLoginActions,
+  notifyActions, apiAddressActions,
+  addressActions, detailProductActions,
+  apiDetailProductActions, imageZoomProductDetailActions,
+  apiQuoteActions, apiQuoteItemActions,
+  quoteItemActions, quoteActions,
+  loginActions, checkoutActions,
+  checkOrderActions, orderActionsApi,
+  orderActions, productFilterActions);
 
 export default actions;

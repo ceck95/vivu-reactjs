@@ -1,0 +1,230 @@
+.order-process
+  padding: 15px
+  +displayFlex()
+  +alignItems(center)
+  +justifyContent(space-between)
+
+.step-label
+  display: block
+  text-align: center
+  flex: 1
+  -webkit-flex: 1
+  span
+    display: block
+  &.active
+    .step_number
+      border-color: transparent
+      background: $blue-second
+      color: $white
+
+.step_number
+  width: 30px
+  height: 30px
+  border-radius: 50%
+  line-height: 24px
+  display: block
+  margin: 4px auto
+  border: 2px solid $blue-second
+  color: $blue-second
+
+
+
+.step-line
+  flex: 2
+  -webkit-flex: 2
+  height: 2px
+  background: rgba($black, .2)
+  &.active
+    background: $blue-second
+
+
+.padding
+  padding-left: 1em
+  padding-right: 1em
+
+.margin-top
+  margin-top: 15px
+
+.margin-top-xs
+  margin-top: 8px
+
+.group-btn-login
+  text-align: center
+
+.col-no-padding
+  padding-left: 0 !important
+  padding-right: 0 !important
+
+.btn-switch-btn
+  width: 100%
+  padding-top: 15px
+  padding-bottom: 15px
+  span
+    display: block
+    &.small
+      opacity: .8
+  &.active
+    background: $white
+  &:hover
+    background: $white
+
+.order-login
+  background: $silver
+
+.order-login_wrap
+  background: $white
+  border-style: solid
+  border-width: 1px
+  border-color: $silver $silver $silver transparent
+
+.order-tabs
+  padding-bottom: 15px
+  padding-top: 15px
+
+.order-wrap_address
+  background: $silver
+
+.order-wrap_address_container
+  margin-left: auto !important
+  margin-right: auto !important
+  float: none !important
+  padding-top: 15px
+
+.order-box
+  border: 1px solid $silver
+  border-radius: 4px
+  padding: 15px
+  box-shadow: $shadow
+
+.pay_wrap
+  display: none
+  &.active
+    display: block
+
+.pay_atm-wrap
+  padding: 15px
+  border-radius: 3px
+  border: 1px solid rgba($black, .4)
+  float: left
+  width: 100%
+  display: none
+  margin:
+    top: 15px
+    bottom: 15px
+
+.pay_atm-wrap_item
+  padding: 4px
+  margin: 4px
+  border: 1px dotted rgba($black, .3)
+  cursor: pointer
+  +transition(all $transition)
+  &.active
+    border-style: solid
+    border-color: $red
+
+.pay_visa-wrap
+  @extend .pay_atm-wrap
+
+.radio-wrap
+  position: absolute
+  visibility: hidden
+  &:checked ~ .label-radio
+    .icon
+      background: $blue-primary
+
+.label-radio
+  position: relative
+  padding-left: 30px
+  display: block
+  line-height: 24px
+  cursor: pointer
+  .icon
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 0
+    left: 0
+    border-radius: 50%
+    border: 1px solid $blue-primary
+    display: block
+    +transition(all $transition)
+
+#pay_atm:checked ~ .pay_atm-wrap
+  display: block
+
+#pay_visa:checked ~ .pay_visa-wrap
+  display: block
+
+.order-btn
+  background: $red
+  position: relative
+  width: 300px
+  height: 40px
+  font-size: 1.1em
+  text-transform: uppercase
+  color: $white
+  margin-top: 15px
+  span
+    position: relative
+  &::before
+    content: ''
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background-color: rgba($black, .1)
+    display: none
+  &:hover
+    &::before
+      display: block
+
+.list-address
+  margin-bottom: 15px
+
+.list-address_item
+  border: 1px dotted $blue-primary
+  padding: 0px 15px 8px
+  position: relative
+  .default
+    position: absolute
+    top: 15px
+    right: 15px
+    color: rgb(30, 140, 130)
+
+.btn-primary
+  background: $blue-primary
+  color: $white
+
+.list-address_item_row
+  padding: 1%
+.btn-address
+  margin: 3px
+.address_box-text
+
+.address_box-price
+  font-weight: bold
+  text-align: right
+.address_hr
+  width: calc(100% - 30px)
+  margin: 12px
+  background: rgba($black, .3)
+  border: none
+  height: 1px
+  float: left
+.text-item-quote-cart_align
+  text-align: right
+.address_box-text
+  font-weight: bold
+  font-size: 16px
+.name-address_text
+  font-weight: bold
+  font-size: 15px
+.total-order_hr
+  padding: 1px
+.right-text
+  text-align: right
+.left-text
+  text-align: left

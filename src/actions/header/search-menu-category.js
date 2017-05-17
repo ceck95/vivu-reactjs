@@ -7,12 +7,26 @@
  */
 
 const type = require('../../const/redux-actions');
+import { push } from 'react-router-redux';
+import config from '../../config/index';
 
 let searchMenuCategoryActions = {
   setShowSearchMenuCategory: (data) => {
     return {
       type: type.showSearchMenuCategory,
       data: data
+    }
+  },
+  setCategoryGroupCurrent: (item) => {
+    return {
+      type: type.setCategoryGroupCurrent,
+      data: item
+    }
+  },
+  search: (item) => {
+    return (dispatch) => {
+      dispatch(searchMenuCategoryActions.setCategoryGroupCurrent(item));
+      dispatch(push(`/${config.router.search.url}${item.searchKey.split(' ').join('-')}`));
     }
   }
 };

@@ -51,7 +51,7 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.6.3",
     "node-sass": "^4.5.0",
-    "react": "^15.4.2",
+    "react": "15.4.2",
     "react-base": "git+ssh://git@github.com:nhutuit/react-auth.git",
     "react-bootstrap": "^0.30.5",
     "react-dom": "^15.4.2",

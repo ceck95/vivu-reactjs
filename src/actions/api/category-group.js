@@ -3,7 +3,7 @@
  * @Date:   2017-02-26T22:06:38+07:00
  * @Email:  tranvannhut4495@gmail.com
  * @Last modified by:   nhutdev
- * @Last modified time: 2017-03-07T11:27:06+07:00
+ * @Last modified time: 2017-03-23T18:24:22+07:00
  */
 
 const type = require('../../const/redux-actions');
@@ -19,9 +19,10 @@ let apiCategoryGroupActions = {
       return helpers.requestBasic({
         uri: '/categories-group',
         method: 'GET'
-      }).then(data => {
+      }, dispatch).then(data => {
         dispatch(categoryGroupActions.setDataCategoryGroup(data));
         dispatch(loadingActions.statusLoadingCategoryGroup());
+        return null;
       });
 
     }

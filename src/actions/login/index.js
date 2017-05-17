@@ -8,6 +8,7 @@
 
 const type = require('../../const/redux-actions');
 const config = require('../../config/index');
+import { push } from 'react-router-redux';
 
 let loginActions = {
   setDataLoginSuccess: (data) => {
@@ -17,6 +18,36 @@ let loginActions = {
     return {
       type: type.setDataLoginSuccess,
       data: data
+    }
+  },
+  logout: () => {
+    localStorage.removeItem(config.login.keyAccessToken);
+    return {
+      type: type.logout
+    }
+  },
+  redirectHome: () => {
+    return (dispatch) => {
+      return dispatch(push('/'));
+    }
+  },
+  changeStatusDataLogin: (data, status) => {
+    return {
+      type: type.changeStatusDataLogin,
+      data: data,
+      status: status
+    }
+  },
+  pushOrderCustomer: () => {
+    return (dispatch) => {
+      dispatch(loginActions.activeTabOrderPageCustomer(true));
+      dispatch(push('/customer'));
+    }
+  },
+  activeTabOrderPageCustomer: (bool) => {
+    return {
+      type: type.activeTabOrderPageCustomer,
+      data: bool
     }
   }
 };
