@@ -19,6 +19,8 @@ import { Link } from 'react-router';
 //config
 import config from '../../../../config/index';
 
+import utility from '../../../../helpers/utility';
+
 class ListProduct extends Component {
 
   constructor(props) {
@@ -90,11 +92,8 @@ class ListProduct extends Component {
               { e.name }
               </Link>
               <p className="price-current bold">
-                { `${e.basePrice}đ` }
-                <span className="promotion">30%</span>
+                { utility.formatCurrency(e.basePrice) }
               </p>
-              <p className="small price">40000d</p>
-              <p className="comment">Chưa có nhận xét</p>
               <button className="add-to-cart" onClick={ this.addToCart.bind(this, e) }>
                 <i className="fa fa-cart-plus" aria-hidden="true"></i>Thêm vào giỏ hàng</button>
             </div>

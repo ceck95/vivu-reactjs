@@ -34,7 +34,7 @@ class Utility {
   }
 
   static formatCurrency(src) {
-    return src.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return `${src.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ${config.default.localCurrency}`;
   }
 
   static filterUrl(baseUrl, url) {

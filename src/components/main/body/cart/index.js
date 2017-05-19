@@ -24,6 +24,7 @@ import loadStatusComponent from '../../../../const/load-status-component';
 
 //config
 import config from '../../../../config/index';
+import utility from '../../../../helpers/utility';
 
 import { Link } from 'react-router';
 
@@ -214,7 +215,7 @@ class Cart extends Component {
        </div>
        <div className="col-xs-6 col-sm-2">
          <p className="bold margin-top-xs">
-           { e.product.basePrice }
+           { utility.formatCurrency(e.product.basePrice) }
          </p>
        </div>
        <div className="col-xs-6 col-sm-2">
@@ -255,13 +256,13 @@ class Cart extends Component {
            <div className="box box-padding">
              <div className="col-xs-4">Tạm tính</div>
              <div className="col-xs-8 cart_box-price">
-               { `${this.state.total} đ` }
+               { utility.formatCurrency(this.state.total) }
              </div>
              <hr className="clear-fix cart_hr box_hr" />
              <div className="col-xs-4">Thành tiền</div>
              <div className="col-xs-8">
                <p className="cart_box-price red big">
-                 { `${this.state.total} đ` }
+                 { utility.formatCurrency(this.state.total) }
                </p>
                <p className="small cart_box-small">(Đã bao gồm VAT)</p>
              </div>

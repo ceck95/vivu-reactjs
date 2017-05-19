@@ -53,10 +53,11 @@ let addressActions = {
       data: data
     }
   },
-  setItemDataListAddress: (item) => {
+  setItemDataListAddress: (item, bool) => {
     return {
       type: type.setItemDataListAddress,
-      item: item
+      item: item,
+      removeList: bool
     }
   },
   changeStatusAddress: (status) => {

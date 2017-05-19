@@ -12,6 +12,8 @@ import config from '../../../../config/index';
 
 import { Link } from 'react-router';
 
+import utility from '../../../../helpers/utility';
+
 class ListProductRight extends Component {
 
   constructor(props) {
@@ -56,9 +58,8 @@ class ListProductRight extends Component {
                 { e.name }
                 </Link>
                 <p className="bold price-current">
-                  { `${e.basePrice} đ` }
+                  { utility.formatCurrency(e.basePrice) }
                 </p>
-                <p className="small price">25000d</p>
               </li>
             );
           }

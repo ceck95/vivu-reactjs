@@ -115,6 +115,9 @@ module.exports = (dataAddress = {
 			});
 		}
 		case type.setItemDataListAddress: {
+			if (action.removeList) {
+				dataAddress.listAddress = [];
+			}
 			dataAddress.listAddress.push(action.item);
 			dataAddress.statusLoadListAddress = statusLoadComponent.readyAssignDataListAddressCheckout;
 			return dataAddress;

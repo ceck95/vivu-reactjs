@@ -93,27 +93,26 @@ class DetailProduct extends Component {
   }
 
   render() {
-    if (Object.keys(this.state.dataProductDetail).length > 0) {
-      return (
-        <div className="container main main-other">
-          <BreadCrumb dataBreadCrumb={ this.state.dataBreadCrumb } />
-          <div className="row">
-            { this.state.dataProductDetail.product.productColors.length > 0
-              ? <HeadInfo dataProductDetail={ this.state.dataProductDetail.product } dataImageZoomProductDetail={ this.state.dataImageZoomProductDetail } actions={ this.props.actions } />
-              : <div className="col-sm-4 detail-images">Không có hình ảnh hiển thị</div> }
-            <BodyInfo actions={ this.props.actions } dataQuoteCart={ this.props.dataQuoteCart } dataProductDetail={ this.state.dataProductDetail.product } />
-            <div className="clear-fix"></div>
-            <hr className="margin-top-bottom" />
-            <Detail dataProductDetail={ this.state.dataProductDetail.product } />
-            <h3 className="title">Sản phẩm liên quan</h3>
-            <Slide dataListProduct={ this.state.dataProductDetail.products } dataBreadCrumb={ this.state.dataBreadCrumb } />
-          </div>
-        </div>
-      )
-    }
-
     return (
-      <div>Loading</div>
+      <div className="container main main-other">
+        { Object.keys(this.state.dataProductDetail).length > 0 ?
+          <div>
+            <BreadCrumb dataBreadCrumb={ this.state.dataBreadCrumb } />
+            <div className="row">
+              { this.state.dataProductDetail.product.productColors.length > 0
+                ? <HeadInfo dataProductDetail={ this.state.dataProductDetail.product } dataImageZoomProductDetail={ this.state.dataImageZoomProductDetail } actions={ this.props.actions } />
+                : <div className="col-sm-4 detail-images">Không có hình ảnh hiển thị</div> }
+              <BodyInfo actions={ this.props.actions } dataQuoteCart={ this.props.dataQuoteCart } dataProductDetail={ this.state.dataProductDetail.product } />
+              <div className="clear-fix"></div>
+              <hr className="margin-top-bottom" />
+              <Detail dataProductDetail={ this.state.dataProductDetail.product } />
+              <h3 className="title">Sản phẩm liên quan</h3>
+              <Slide dataListProduct={ this.state.dataProductDetail.products } dataBreadCrumb={ this.state.dataBreadCrumb } />
+            </div>
+          </div>
+          :
+          <div>Loading</div> }
+      </div>
     )
 
   }

@@ -70,7 +70,9 @@ let apiAddressActions = {
     };
   },
   insertAddress: (address) => {
+    let removeList = true;
     if (address.customerAddressId) {
+      removeList = false;
       delete address.customerAddressId;
     }
     return (dispatch) => {
@@ -81,7 +83,7 @@ let apiAddressActions = {
           data: address
         }
       }, dispatch).then(data => {
-        dispatch(addressActions.setItemDataListAddress(data.customerAddress));
+        dispatch(addressActions.setItemDataListAddress(data.customerAddress, removeList));
         dispatch(checkoutActions.setAddressToCheckout(data.customerAddress, true, loadStatus.assignDataLoad));
         return null;
       });
@@ -94,7 +96,7 @@ let apiAddressActions = {
       delete address.customerAddressId;
 
       return (dispatch) => {
-        return helpers.request({
+        return helpers.requestMerge({
           uri: `/customer-address/${id}`,
           method: 'POST',
           body: {

@@ -18,7 +18,8 @@
     "maxQuantity": 1000,
     "defaultActiveTabCustomerInfo": "user",
     "filterItemPrice": 5,
-    "filterItemPriceDistance": 10000000
+    "filterItemPriceDistance": 10000000,
+    "localCurrency":"đ"
   },
   "router": {
     "search": {
@@ -49,5 +50,8 @@
     "shipping": 2,
     "completed": 5,
     "cancel": 6
+  },
+  "app":{
+    "elementId":"root"
   }
 }

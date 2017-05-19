@@ -41,47 +41,11 @@ class Detail extends Component {
         <div className="detail-info tabs-wrap tabs-wrap-secondary">
           <ul className="tabs">
             <li data-tab="tabs-content-1" className="tabs_btn col-xs-4 active">Chi tiết sản phẩm</li>
-            <li data-tab="tabs-content-2" className="tabs_btn col-xs-4">Đánh giá</li>
-            <li data-tab="tabs-content-3" className="tabs_btn col-xs-4">Bình luận</li>
           </ul>
           <div className="tabs-content">
             <div id="tabs-content-1" className="tabs-content_wrap active">
               <div dangerouslySetInnerHTML={ this.createMarkup() } />
-              <table className="detail_tbl">
-                <tbody>
-                  <tr>
-                    <td>Danh mục</td>
-                    <td>Vivamus suscipit tortor ege.</td>
-                  </tr>
-                  <tr>
-                    <td>Size</td>
-                    <td>Vivamus suscipit tortor eget felis porttitor volutpat.</td>
-                  </tr>
-                  <tr>
-                    <td>Chất liệu</td>
-                    <td>Vivamus suscipit tortor eget felis porttitor volutpat.</td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="detail_tbl">
-                <tbody>
-                  <tr>
-                    <td>Danh mục</td>
-                    <td>Vivamus suscipit tortor ege.</td>
-                  </tr>
-                  <tr>
-                    <td>Size</td>
-                    <td>Vivamus suscipit tortor eget felis porttitor volutpat.</td>
-                  </tr>
-                  <tr>
-                    <td>Chất liệu</td>
-                    <td>Vivamus suscipit tortor eget felis porttitor volutpat.</td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
-            <div id="tabs-content-2" className="tabs-content_wrap">content-2</div>
-            <div id="tabs-content-3" className="tabs-content_wrap">content-3</div>
           </div>
         </div>
       </div>

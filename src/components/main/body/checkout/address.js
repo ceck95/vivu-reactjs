@@ -156,6 +156,7 @@ class Address extends Component {
     }
 
     if (helpers.Data.isEmptyValueOfObject(this.state.form)) {
+      window.scrollTo(0, 0);
       if (update) {
         return func(data, this.props.dataAddress);
       }

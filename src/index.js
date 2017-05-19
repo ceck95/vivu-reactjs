@@ -13,11 +13,11 @@ import reducers from './reducers/index';
 import routers from './routers/index';
 import ReactBase from 'react-base';
 
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import {compose, combineReducers, createStore, applyMiddleware} from 'redux';
-import {Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-router';
-import {syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { compose, combineReducers, createStore, applyMiddleware } from 'redux';
+import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import config from './config/index';
@@ -31,13 +31,13 @@ class Container {
       hashHistory: false,
       reducers: reducers,
       routers: routers,
-      elementById: 'root',
+      elementById: config.app.elementId,
       authenticate: {
         status: true,
         statusActionLoginFail: false,
         keyToken: config.login.keyAccessToken,
         actionsBeforeRender: actions.profile,
-        // actionsLoginFail: authActions.loadLogin({loadLogin: true})
+      // actionsLoginFail: authActions.loadLogin({loadLogin: true})
       }
     }, compose, combineReducers, createStore, applyMiddleware, syncHistoryWithStore, routerReducer, routerMiddleware, thunk, hashHistory, browserHistory);
 
@@ -50,11 +50,11 @@ class Container {
     }
 
     render(
-      <Provider store={this._container.store}>
-      <Router history={this._container.history}>
-        {this._container.routers}
-      </Router>
-    </Provider>, document.getElementById(this._container.elementById));
+      <Provider store={ this._container.store }>
+        <Router history={ this._container.history }>
+          { this._container.routers }
+        </Router>
+      </Provider>, document.getElementById(this._container.elementById));
 
   }
 

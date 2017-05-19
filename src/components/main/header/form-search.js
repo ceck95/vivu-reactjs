@@ -14,6 +14,7 @@ import ListCategorySearch from './list-category-search';
 const categoryGroupNameDefault = 'Tất cả';
 
 import statusLoad from '../../../const/load-status';
+import config from '../../../config/index';
 
 class FormSearch extends Component {
 
@@ -35,6 +36,24 @@ class FormSearch extends Component {
     }
     let data = helpers.Data.assign(this.props.stateCategorySearch, dataAssign);
     this.props.actions.setShowSearchMenuCategory(data);
+  }
+
+  componentDidMount() {
+    window.document.getElementById(config.app.elementId).addEventListener('click', this.handleClickOutsideSearch.bind(this))
+  }
+
+  componentWillUnmount() {
+    window.document.getElementById(config.app.elementId).removeEventListener('click', this.handleClickOutsideSearch.bind(this))
+  }
+
+  handleClickOutsideSearch(e) {
+    let area = this.refs.categorySearch;
+
+    if (!area.contains(e.target)) {
+      this.props.actions.setShowSearchMenuCategory(helpers.Data.assign(this.props.stateCategorySearch, {
+        showMenu: false
+      }));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -69,7 +88,8 @@ class FormSearch extends Component {
 
     return (
       <div className="header_search">
-        <span className="header_search_btn-categories no-select" onClick={ this.showCategorySearch.bind(this) }><span>{ this.state.currentCategoryGroupName }</span><i className="fa fa-chevron-down" aria-hidden="true"></i>
+        <span ref="categorySearch" className="header_search_btn-categories no-select" onClick={ this.showCategorySearch.bind(this) }><span>{ this.state.currentCategoryGroupName }</span><i className="fa fa-chevron-down"
+          aria-hidden="true"></i>
         <ListCategorySearch actions={ this.props.actions } stateCategorySearch={ this.props.stateCategorySearch } dataCategoryGroup={ this.props.dataCategoryGroup } />
         </span>
         <input type="text" ref="searchKey" onKeyPress={ this.searchKey.bind(this) } className="header_search_input" placeholder="Tìm kiếm gì đó ?" />
