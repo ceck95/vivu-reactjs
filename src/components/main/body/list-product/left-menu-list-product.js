@@ -93,7 +93,7 @@ class LeftMenuListProduct extends Component {
       let priceDistance = price + filterItemPriceDistance;
       listElementPrice.push(<li onClick={ this.filterPrice.bind(this, price, priceDistance) } className="list-link" key={ i }>
                               <a className="link">
-                                { `${utility.formatCurrency(price)}đ - ${utility.formatCurrency(priceDistance)}đ` }
+                                { `${utility.formatCurrency(price)} - ${utility.formatCurrency(priceDistance)}` }
                               </a>
                             </li>);
       price = price + filterItemPriceDistance;
