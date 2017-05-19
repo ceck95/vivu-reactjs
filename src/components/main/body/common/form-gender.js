@@ -37,7 +37,7 @@ class FormGender extends Component {
         <label className="col-xs-3" htmlFor="">Giới tính:</label>
         <div className="col-xs-9 sex-wrap require-wrap">
           <div>
-            <input checked={ this.state.gender === 'male' } onChange={ this.setGender.bind(this, 'male') } type="radio" id="male" name="gender" ref="gender" />
+            <input checked={ this.state.gender === 'male' } onChange={ this.setGender.bind(this, 'male') } type="radio" id="male" name="gender" />
             <label htmlFor="male">
               <span className="check"></span>Nam
             </label>

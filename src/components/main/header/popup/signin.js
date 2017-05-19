@@ -233,7 +233,7 @@ class Signin extends Component {
                       : '' }
                   </div>
                 </div>
-                <FormGender setGender={ this.setGender.bind(this) } />
+                <FormGender setGender={ this.setGender.bind(this) } message={ this.state.form.gender } value={ this.state.gender } />
                 <FormDob setValueDob={ this.setValueDob.bind(this) } message={ this.state.form.dob } />
                 <div className="signin_items row">
                   <div className="col-xs-3"> </div>

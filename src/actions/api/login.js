@@ -66,9 +66,9 @@ let apiLoginActions = {
             dob: data.dob,
             address: {
               street: data.street,
-              province: data.city,
-              district: data.district,
-              ward: data.ward
+              provinceCode: data.province,
+              districtCode: data.district,
+              wardCode: data.ward
             }
           }
         }

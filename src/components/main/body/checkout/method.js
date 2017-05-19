@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { helpers } from 'react-base';
 import { Link } from 'react-router';
 import checkoutMethod from '../../../../const/check-out';
+import utility from '../../../../helpers/utility';
 
 //hard code
 const show = false;
@@ -74,14 +75,14 @@ class Method extends Component {
         listQuoteCart.push(
           <div key={ i }>
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-7">
                 <p>
                   { `${e.quantity} * ${e.product.name}` }
                 </p>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-5">
                 <p className="text-item-quote-cart_align">
-                  { e.basePrice }
+                  { utility.formatCurrency(e.basePrice) }
                 </p>
               </div>
             </div>
@@ -252,14 +253,16 @@ class Method extends Component {
                     <div className="col-md-6">Tạm tính:</div>
                     <div className="col-md-6">
                       <p className="text-item-quote-cart_align">
-                        { this.state.total }
+                        { utility.formatCurrency(this.state.total) }
                       </p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">Phí vận chuyển:</div>
                     <div className="col-md-6">
-                      <p className="text-item-quote-cart_align">0 đ</p>
+                      <p className="text-item-quote-cart_align">
+                        { utility.formatCurrency(0) }
+                      </p>
                     </div>
                   </div>
                   <div className="row">
@@ -269,7 +272,7 @@ class Method extends Component {
                     <div className="col-xs-6">Thành tiền:</div>
                     <div className="col-xs-6">
                       <p className="cart_box-price red big">
-                        { `${this.state.total} đ` }
+                        { utility.formatCurrency(this.state.total) }
                       </p>
                       <p className="small cart_box-small">(Đã bao gồm VAT)</p>
                     </div>
