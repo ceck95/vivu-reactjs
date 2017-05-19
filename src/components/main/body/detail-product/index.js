@@ -106,6 +106,8 @@ class DetailProduct extends Component {
               <div className="clear-fix"></div>
               <hr className="margin-top-bottom" />
               <Detail dataProductDetail={ this.state.dataProductDetail.product } />
+              <div className="clear-fix"></div>
+              <hr className="margin-top-bottom" />
               <h3 className="title">Sản phẩm liên quan</h3>
               <Slide dataListProduct={ this.state.dataProductDetail.products } dataBreadCrumb={ this.state.dataBreadCrumb } />
             </div>
