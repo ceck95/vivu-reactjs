@@ -21,6 +21,8 @@ import config from '../../../../config/index';
 
 import utility from '../../../../helpers/utility';
 
+import Image from './image';
+
 class ListProduct extends Component {
 
   constructor(props) {
@@ -87,7 +89,8 @@ class ListProduct extends Component {
           <div key={ i } className="col-sm-6 col-md-4">
             <div className="tabs_items">
               <Link className="link-img" to={ `/${productKey}` }>
-              <img className="" src={ `${config.cdn.link}${e.imagePath}` } className="img-responsive" alt="" /></Link>
+              <Image linkImage={ e.imagePath } />
+              </Link>
               <Link to={ `/${productKey}` } className="link-text">
               { e.name }
               </Link>

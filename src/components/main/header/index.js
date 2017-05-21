@@ -76,11 +76,17 @@ class Header extends Component {
 		this.props.actions.setShowMenuCategory(helpers.Data.assign(this.props.menuCategory, data));
 		window.addEventListener('scroll', this.scrollSlide.bind(this));
 		window.document.getElementById(config.app.elementId).addEventListener('click', this.handleDocumentClick.bind(this))
+		window.addEventListener("resize", this.updateDimensions.bind(this));
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.scrollSlide.bind(this));
 		window.document.getElementById(config.app.elementId).removeEventListener('click', this.handleDocumentClick.bind(this))
+		window.removeEventListener("resize", this.updateDimensions.bind(this));
+	}
+
+	updateDimensions() {
+		sizeWidthWindow = window.innerWidth;
 	}
 
 	handleDocumentClick(e) {

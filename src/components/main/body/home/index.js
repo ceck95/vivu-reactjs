@@ -39,7 +39,9 @@ class Home extends Component {
     if (this.props.categoryGroup.length > 0 && !this.props.menuCategory.loadedListProductHome) {
       let listCategoryId = [];
       this.props.categoryGroup.forEach(e => {
-        listCategoryId.push(e.id);
+        if (e.showPageHome) {
+          listCategoryId.push(e.id);
+        }
       });
       this.props.actions.getProductByCategoryGroup(listCategoryId.join(','), this.props.categoryGroup, this.props.loadingPage, this.props.menuCategory);
     } else {

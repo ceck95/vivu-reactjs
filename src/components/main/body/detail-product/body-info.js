@@ -71,9 +71,10 @@ class BodyInfo extends Component {
         <div>
           <div className="col-sm-8 detail-info_text">
             <p>Sku:
+              { ' ' }
               { this.state.dataProductDetail.sku }
             </p>
-            <p>Gía:
+            <p>Giá:
               { ' ' }
               <span className="price-current big blue">{ utility.formatCurrency(this.state.dataProductDetail.basePrice) }</span>
             </p>
