@@ -7,7 +7,7 @@
     "link": "http://cdn.vivu.dev/"
   },
   "default": {
-    "pageSizeFilter": 1,
+    "pageSizeFilter": 4,
     "maxLengthPagination": 3,
     "limitListProductHome": 3,
     "limitListProductRightHome": 3,

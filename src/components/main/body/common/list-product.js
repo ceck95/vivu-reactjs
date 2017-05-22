@@ -29,7 +29,8 @@ class ListProduct extends Component {
     super(props);
     this.state = {
       dataItemProduct: [],
-      dataCategoryGroup: {}
+      dataCategoryGroup: {},
+      heightElement: 0
     };
   }
 
@@ -40,10 +41,27 @@ class ListProduct extends Component {
     });
   }
 
+  componentDidMount() {
+    this.setHeight();
+  }
+
+  setHeight() {
+    let arrE = document.getElementsByClassName('tabs_items'),
+      valArr = [];
+    for (let e of arrE) {
+      valArr.push(e.clientHeight);
+    }
+    let maxHeight = Math.max.apply(null, valArr);
+    this.setState({
+      heightElement: maxHeight
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       dataItemProduct: nextProps.dataItemProduct
     });
+    this.setHeight();
   }
 
   addToCart(e) {
@@ -86,7 +104,7 @@ class ListProduct extends Component {
         // if (e.categoryId === a.id) {
         let productKey = this.getUrlKey(e);
         listElementProduct.push(
-          <div key={ i } className="col-sm-6 col-md-4">
+          <div key={ i } className="col-sm-6 col-md-4" style={ { height: this.state.heightElement } }>
             <div className="tabs_items">
               <Link className="link-img" to={ `/${productKey}` }>
               <Image linkImage={ e.imagePath } />
