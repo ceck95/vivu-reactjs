@@ -25,9 +25,9 @@ class Image extends Component {
 
   setHeight() {
     let width = this.refs.imageSize.offsetWidth - 5;
-    // this.setState({
-    //   height: width
-    // });
+    this.setState({
+      height: width
+    });
   }
 
   componentWillUnmount() {

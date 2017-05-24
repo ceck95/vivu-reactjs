@@ -46,7 +46,7 @@ class ListProduct extends Component {
   }
 
   setHeight() {
-    let arrE = document.getElementsByClassName('tabs_items'),
+    let arrE = this.refs.tabsItems,
       valArr = [];
     for (let e of arrE) {
       valArr.push(e.clientHeight);
@@ -105,7 +105,7 @@ class ListProduct extends Component {
         let productKey = this.getUrlKey(e);
         listElementProduct.push(
           <div key={ i } className="col-sm-6 col-md-4" style={ { height: this.state.heightElement } }>
-            <div className="tabs_items">
+            <div ref="tabsItems" className="tabs_items">
               <Link className="link-img" to={ `/${productKey}` }>
               <Image linkImage={ e.imagePath } />
               </Link>
