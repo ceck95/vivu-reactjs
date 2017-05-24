@@ -48,9 +48,10 @@ class ListProduct extends Component {
   setHeight() {
     let arrE = document.getElementsByClassName('tabs_items'),
       valArr = [];
-    for (let e of arrE) {
+    arrE.forEach(e => {
       valArr.push(e.clientHeight);
-    }
+    })
+
     let maxHeight = Math.max.apply(null, valArr);
     this.setState({
       heightElement: maxHeight
