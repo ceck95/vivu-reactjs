@@ -30,7 +30,7 @@ class ListProduct extends Component {
     this.state = {
       dataItemProduct: [],
       dataCategoryGroup: {},
-      heightElement: 0
+      heightElement: null
     };
   }
 
