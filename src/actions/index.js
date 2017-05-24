@@ -34,6 +34,8 @@ import checkOrderActions from './checkout/check';
 import orderActionsApi from './api/order';
 import orderActions from './order/data';
 import productFilterActions from './product/filter';
+import dataSettingActions from './setting/data';
+import apiSettingActions from './api/setting';
 
 let actions = Object.assign(loadingActions, searchMenuCategoryActions,
   menuCategoryActions, apiCategoryGroupActions,
@@ -47,6 +49,7 @@ let actions = Object.assign(loadingActions, searchMenuCategoryActions,
   quoteItemActions, quoteActions,
   loginActions, checkoutActions,
   checkOrderActions, orderActionsApi,
-  orderActions, productFilterActions);
+  orderActions, productFilterActions,
+  dataSettingActions, apiSettingActions);
 
 export default actions;

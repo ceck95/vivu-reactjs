@@ -25,6 +25,7 @@ const dataQuote = require('./quote/data');
 const dataQuoteCart = require('./quote/cart');
 const dataCheckout = require('./checkout/data');
 const dataOrder = require('./order/data');
+const dataSetting = require('./setting/data');
 
 module.exports = {
   loadingPage: loadingPage,
@@ -43,5 +44,6 @@ module.exports = {
   dataQuote: dataQuote,
   dataQuoteCart: dataQuoteCart,
   dataCheckout: dataCheckout,
-  dataOrder: dataOrder
+  dataOrder: dataOrder,
+  dataSetting: dataSetting
 };

@@ -29,7 +29,7 @@
 }
 
 .sp-parallax-bg {
-  background: url(../images/map.png) repeat-x scroll 0 0;
+  /*background: url(../images/map.png) repeat-x scroll 0 0;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

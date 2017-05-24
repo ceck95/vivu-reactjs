@@ -49,5 +49,7 @@ module.exports = {
   setDataOrder: 'SET_DATA_ORDER',
   changeStatusLoadDataOrder: 'CHANGE_STATUS_LOAD_DATA_ORDER',
   setCategoryGroupCurrent: 'SET_CATEGORY_GROUP_CURRENT',
-  setLoadFilterProduct: 'SET_LOAD_FILTER_PRODUCT'
+  setLoadFilterProduct: 'SET_LOAD_FILTER_PRODUCT',
+  setDataSetting: 'SET_DATA_SETTING',
+  setStatusDataSetting: 'SET_STATUS_DATA_SETTING'
 }
