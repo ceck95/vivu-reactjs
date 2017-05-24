@@ -46,7 +46,7 @@ class ListProduct extends Component {
   }
 
   setHeight() {
-    let arrE = this.refs.tabsItems,
+    let arrE = document.getElementsByClassName('tabs_items'),
       valArr = [];
     for (let e of arrE) {
       valArr.push(e.clientHeight);
