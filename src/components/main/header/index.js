@@ -53,7 +53,7 @@ class Header extends Component {
   }
 
   componentWillMount() {
-    // this.props.actions.getQuote();
+    this.props.actions.getQuote();
   }
 
   componentDidMount() {
