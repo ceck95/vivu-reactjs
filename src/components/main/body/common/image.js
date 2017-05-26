@@ -36,7 +36,7 @@ class Image extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      linkImage: this.props.linkImage
+      linkImage: nextProps.linkImage
     });
     this.setHeight();
   }
