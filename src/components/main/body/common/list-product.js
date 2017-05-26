@@ -58,6 +58,7 @@ class ListProduct extends Component {
     }
 
     let maxHeight = Math.max.apply(null, valArr);
+    maxHeight = maxHeight < 300 ? 300 : maxHeight;
     this.setState({
       heightElement: maxHeight
     });
