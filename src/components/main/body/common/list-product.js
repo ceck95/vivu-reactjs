@@ -47,15 +47,7 @@ class ListProduct extends Component {
 
   shouldComponentUpdate() {
     this.setHeight();
-  }
-
-  componentWillUpdate() {
-    this.setHeight();
     return true;
-  }
-
-  componentDidUpdate() {
-    this.setHeight();
   }
 
   setHeight() {
