@@ -95,6 +95,15 @@ class Login extends Component {
 
   }
 
+  showPopupSignin() {
+    this.props.actions.setStatePopupLogin(helpers.Data.assign(this.props.statePopup, {
+      signin: true
+    }));
+    this.props.actions.setStatePopupLogin(helpers.Data.assign(this.props.statePopup, {
+      login: false
+    }));
+  }
+
   render() {
     return (
       <div className="modal popup-login">
@@ -103,7 +112,7 @@ class Login extends Component {
             <h1 className="login_title">Đăng nhập</h1>
             <p>
               Bạn chưa có tài khoản ?
-              <a href="#">
+              <a className="link" onClick={ this.showPopupSignin.bind(this) }>
                 { ' ' }Đăng ký</a>
             </p>
             <hr/>
@@ -112,8 +121,8 @@ class Login extends Component {
               <div className="login_items">
                 <input type="text" placeholder="Nhập Email" ref="email" />
                 <span className="icon">
-                                          <i className="fa fa-envelope" aria-hidden="true"></i>
-                                        </span>
+                                                                                                <i className="fa fa-envelope" aria-hidden="true"></i>
+                                                                                              </span>
                 <span className="line"></span>
               </div>
               { this.state.form.email
@@ -125,8 +134,8 @@ class Login extends Component {
               <div className="login_items">
                 <input type="password" placeholder="Nhập mật khẩu" ref="password" />
                 <span className="icon">
-                                          <i className="fa fa-lock" aria-hidden="true"></i>
-                                        </span>
+                                                                                                <i className="fa fa-lock" aria-hidden="true"></i>
+                                                                                              </span>
                 <span className="line"></span>
               </div>
               { this.state.form.password
@@ -139,12 +148,6 @@ class Login extends Component {
             </p>
             <button className="btn-login" onClick={ this.login.bind(this) } disabled={ this.state.disableButtonLogin }>
               <div>Đăng nhập</div>
-            </button>
-            <button className="btn-login btn-login-fb">
-              <div>Login with Facebook</div>
-            </button>
-            <button className="btn-login btn-login-gg">
-              <div>Login with Google</div>
             </button>
             <button className="modal_btn-close popup-login_btn-close" onClick={ this.closePopup.bind(this) }>
               <i className="fa fa-times" aria-hidden="true"></i>

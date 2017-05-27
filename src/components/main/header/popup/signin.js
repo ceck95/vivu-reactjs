@@ -181,6 +181,15 @@ class Signin extends Component {
     })
   }
 
+  showPopupLogin() {
+    this.props.actions.setStatePopupLogin(helpers.Data.assign(this.props.statePopup, {
+      login: true
+    }));
+    this.props.actions.setStatePopupLogin(helpers.Data.assign(this.props.statePopup, {
+      signin: false
+    }));
+  }
+
   render() {
     let errorRender = (message) => {
       return <ErrorForm message={ message } />;
@@ -192,7 +201,7 @@ class Signin extends Component {
           <div className="modal_wrap">
             <h1 className="login_title">Đăng ký</h1>
             <p>Bạn đã có tài khoản?
-              <a className="move-to-signin" href="#">Đăng nhập</a>
+              <a onClick={ this.showPopupLogin.bind(this) } className="move-to-signin link">Đăng nhập</a>
             </p>
             <hr/>
             <div className="row">
@@ -250,13 +259,6 @@ class Signin extends Component {
                 </div>
               </div>
               <div className="col-sm-4 signin_social">
-                <h4 className="title">Đăng nhập bằng tài khoản mạng xã hội</h4>
-                <div className="signin_social_item">
-                  <button className="signin_social_btn-fb">
-                    <span><i className="fa fa-facebook" aria-hidden="true"></i></span> Đăng nhập bằng facebook
-                  </button>
-                </div>
-                <hr/>
                 { Object.keys(this.state.dataAddress).length > 0 ?
                   <FormAddress loading={ true } setValueAddress={ this.setValueAddress.bind(this) } dataAddress={ this.state.dataAddress } actions={ this.props.actions } messageProvince={ this.state.form.province }
                     messageDistrict={ this.state.form.district } messageWard={ this.state.form.ward } />

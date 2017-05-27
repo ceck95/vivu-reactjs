@@ -70,9 +70,9 @@ let apiAddressActions = {
     };
   },
   insertAddress: (address) => {
-    let removeList = true;
+    let removeList = false;
     if (address.customerAddressId) {
-      removeList = false;
+      removeList = true;
       delete address.customerAddressId;
     }
     return (dispatch) => {
@@ -103,7 +103,6 @@ let apiAddressActions = {
             data: address
           }
         }, dispatch).then(data => {
-          console.log(data);
           return dispatch(addressActions.updateListAddress(data, dataAddress));
         });
       };

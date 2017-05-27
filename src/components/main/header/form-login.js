@@ -100,8 +100,6 @@ class FormLogin extends Component {
                 <div>
                   <span className="login_btn login_btn-login" onClick={ this.showPopupLogin.bind(this) }>Đăng nhập</span>
                   <span className="login_btn login_btn-signin" onClick={ this.showPopupSignin.bind(this) }>Đăng ký</span>
-                  <span className="login_btn login_btn-fb">Đăng nhập bằng Facebook</span>
-                  <span className="login_btn login_btn-gg">Đăng nhập bằng Google</span>
                 </div> }
             </div>
           </div>
