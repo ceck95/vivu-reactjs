@@ -36,7 +36,6 @@ class Detail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.state.urlCommentFace);
     if (JSON.stringify(nextProps) !== JSON.stringify(this.props)) {
       this.handleValue(nextProps);
     }
