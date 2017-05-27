@@ -103,6 +103,7 @@ let apiAddressActions = {
             data: address
           }
         }, dispatch).then(data => {
+          console.log(data);
           return dispatch(addressActions.updateListAddress(data, dataAddress));
         });
       };

@@ -105,7 +105,7 @@ class DetailProduct extends Component {
               <BodyInfo actions={ this.props.actions } dataQuoteCart={ this.props.dataQuoteCart } dataProductDetail={ this.state.dataProductDetail.product } />
               <div className="clear-fix"></div>
               <hr className="margin-top-bottom" />
-              <Detail dataProductDetail={ this.state.dataProductDetail.product } />
+              <Detail routing={ this.props.routing } dataProductDetail={ this.state.dataProductDetail.product } />
               <div className="clear-fix"></div>
               <hr className="margin-top-bottom" />
               <h3 className="title">Sản phẩm liên quan</h3>

@@ -217,13 +217,17 @@ class Header extends Component {
 
   render() {
 
-    const appName = this.props.dataSetting.setting.appName;
+    const configSystem = this.props.dataSetting.setting,
+      appName = configSystem.appName,
+      textHeader = configSystem.textHeader;
 
     return (
       <header className="header">
         <div className={ `header_top ${this.state.headerDisplay}` }>
           <div className="header_top_left container">
-            <a href="#">tranvannhut4495@gmail.com</a>
+            <a href="#">
+              { textHeader }
+            </a>
           </div>
         </div>
         <div className="container">

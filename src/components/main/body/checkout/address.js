@@ -30,7 +30,8 @@ class Address extends Component {
       showEdit: false,
       customerAddressId: null,
       isAuthenticated: null,
-      dataAddress: {}
+      dataAddress: {},
+      hiddenCheckDefault: false
     }
   }
 
@@ -100,6 +101,7 @@ class Address extends Component {
         districtCode: '',
         wardCode: '',
         isDefault: false,
+        hiddenCheckDefault: false,
         districts: [],
         wards: [],
         showEdit: false,
@@ -246,7 +248,8 @@ class Address extends Component {
         type: e.type,
         isDefault: e.isDefault,
         showEdit: true,
-        customerAddressId: e.id
+        customerAddressId: e.id,
+        hiddenCheckDefault: e.isDefault ? false : false
       });
       this.showAddAddress({
         notClose: true
@@ -300,8 +303,10 @@ class Address extends Component {
               </p>
               <button onClick={ this.setAddressToCheckout.bind(this, e) } className="btn-default btn-primary margin-top btn-address">Giao hàng đên địa chỉ này</button>
               <button onClick={ this.editAddress.bind(this, e) } className="btn-default btn-address">Sửa</button>
-              { this.state.isAuthenticated ?
-                <button onClick={ this.deleteItemAddress.bind(this, e) } className="btn-default btn-address">Xóa</button>
+              { this.state.isAuthenticated ? e.isDefault ?
+                  ''
+                  :
+                  <button onClick={ this.deleteItemAddress.bind(this, e) } className="btn-default btn-address">Xóa</button>
                 :
                 '' }
             </div>
@@ -310,6 +315,14 @@ class Address extends Component {
       });
     }
 
+    const elementIsDefault = <div className="signin_items row">
+                               <div className="col-xs-3"> </div>
+                               <div className="col-xs-9 checkbox_mail-wrap">
+                                 <input checked={ this.state.isDefault } type="checkbox" id="checkbox_address" onChange={ this.setDefaultAddress.bind(this) } />
+                                 <label htmlFor="checkbox_address" className="text">
+                                   <span className="select"></span> Sư dụng địa chỉ này làm mặc định</label>
+                               </div>
+                             </div>;
 
     return (
       <div className="step-1">
@@ -375,15 +388,8 @@ class Address extends Component {
                     : '' }
                 </div>
               </div>
-              { this.state.isAuthenticated ?
-                <div className="signin_items row">
-                  <div className="col-xs-3"> </div>
-                  <div className="col-xs-9 checkbox_mail-wrap">
-                    <input checked={ this.state.isDefault } type="checkbox" id="checkbox_address" onChange={ this.setDefaultAddress.bind(this) } />
-                    <label htmlFor="checkbox_address" className="text">
-                      <span className="select"></span> Sư dụng địa chỉ này làm mặc định</label>
-                  </div>
-                </div> : '' }
+              { this.state.isAuthenticated ? this.state.hiddenCheckDefault ? '' :
+                  elementIsDefault : '' }
               <div className="signin_items row">
                 <div className="col-xs-3"> </div>
                 <div className="col-xs-9 checkbox_mail-wrap">

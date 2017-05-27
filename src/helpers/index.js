@@ -29,10 +29,10 @@ class ReactHelper {
       let responseError = (dispatch, error) => {
           error.types = 'errors';
           error.show = true;
-          let errorResp = new Error(error);
+          // let errorResp = new Error(error);
+          dispatch(notifyActions.setDataNotify(error));
 
-          dispatch(notifyActions.setDataNotify(error))
-          return reject(errorResp);
+          return null;
         },
         respError = null,
         error = {};

@@ -21,6 +21,15 @@
     "filterItemPriceDistance": 10000000,
     "localCurrency":"đ"
   },
+  "facebook":{
+    "appId":"192978661087964",
+    "version":"v2.9",
+    "comment":{
+      "width":"100%",
+      "url":"http://reactjs.vivu.nhutuit.com/",
+      "numberPost":10
+    }
+  },
   "router": {
     "search": {
       "url": "search?q=",

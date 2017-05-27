@@ -72,9 +72,9 @@ class SlideHeadInfo extends Component {
 					setSizeSlide: true,
 					sliderIndex: 0
 				});
-				if (Object.keys(this.props.dataImageZoomProductDetail).length === 0) {
-					this.props.actions.setDataImageZoomProductDetail(dataProps.productColorPreviewImages[0]);
-				}
+				// if (Object.keys(this.props.dataImageZoomProductDetail).length === 0) {
+				this.props.actions.setDataImageZoomProductDetail(dataProps.productColorPreviewImages[0]);
+			// }
 			};
 
 			if (next) {
