@@ -46,7 +46,6 @@ let apiQuoteActions = {
           type: 'success',
           show: true
         }));
-        console.log(isAuthenticated);
         if (isAuthenticated) {
           dispatch(orderActionsApi.getOrders());
         }
