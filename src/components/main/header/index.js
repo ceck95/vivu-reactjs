@@ -36,7 +36,8 @@ class Header extends Component {
       headerDisplay: '',
       dataNotify: {},
       listNotify: [],
-      keyNotify: 0
+      keyNotify: 0,
+      loading: null
     }
   }
 
@@ -149,6 +150,17 @@ class Header extends Component {
       lastPathName = this.props.routing.locationBeforeTransitions.pathname,
       routeInfo = nextProps.routing.locationBeforeTransitions;
 
+    if (nextProps.loadingPage.loading === loadStatus.startLoad) {
+      this.setState({
+        loading: true
+      })
+    } else {
+      this.setState({
+        loading: false
+      })
+    }
+
+
     if (routeInfo.pathname === '/' && routeInfo.search === `?${config.login.redirectQueryParamName}=%2Fcheckout`) {
       if (!nextProps.statePopup.login) {
         this.props.actions.setStatePopupLogin(helpers.Data.assign(nextProps.statePopup, {
@@ -255,6 +267,16 @@ class Header extends Component {
         { this.state.listNotify.length > 0
           ? this.state.listNotify
           : '' }
+        { this.state.loading ?
+          <div className="background-css">
+            <div className="cssload-loader">
+              <div className="cssload-inner cssload-one"></div>
+              <div className="cssload-inner cssload-two"></div>
+              <div className="cssload-inner cssload-three"></div>
+            </div>
+          </div>
+          :
+          '' }
       </header>
     )
   }

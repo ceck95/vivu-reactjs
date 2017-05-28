@@ -12,6 +12,8 @@ const config = require('../config/index');
 const BPromise = require('bluebird');
 import notifyActions from '../actions/header/notify';
 import loginActions from '../actions/login/index';
+import loadingAction from '../actions/loading/index';
+import loadStatus from '../const/load-status';
 
 class ReactHelper {
 
@@ -19,12 +21,17 @@ class ReactHelper {
     return `Basic ${config.api.clientId}`;
   }
 
-  static responseFunc(options, reject, resolve, baseURL, init, dispatch) {
+  static responseFunc(options, reject, resolve, baseURL, init, dispatch, effect) {
     let code = null;
+
+    ReactHelper.handleEffect(effect, dispatch, null);
+
     return fetch(`${baseURL}${init.uri}`, options).then((response) => {
       code = response.status;
       return response.json();
     }).then((data) => {
+
+      ReactHelper.handleEffect(effect, dispatch, true);
 
       let responseError = (dispatch, error) => {
           error.types = 'errors';
@@ -64,7 +71,16 @@ class ReactHelper {
     });
   }
 
-  static requestMerge(init, dispatch) {
+  static handleEffect(bool, dispatch, after) {
+    if (after) {
+      return bool ? dispatch(loadingAction.statusLoadingPage(loadStatus.available)) : null;
+    }
+    if (bool) {
+      return dispatch(loadingAction.statusLoadingPage(loadStatus.startLoad))
+    }
+  }
+
+  static requestMerge(init, dispatch, effect) {
     return new BPromise((resolve, reject) => {
 
       if (localStorage.getItem(config.login.keyAccessToken)) {
@@ -85,11 +101,11 @@ class ReactHelper {
         options.body = JSON.stringify(init.body);
       }
 
-      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch);
+      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
     });
   }
 
-  static requestBasic(init, dispatch) {
+  static requestBasic(init, dispatch, effect) {
     return new BPromise((resolve, reject) => {
       let baseURL = null;
       if (init.baseURL) {
@@ -110,11 +126,11 @@ class ReactHelper {
         options.body = JSON.stringify(init.body);
       }
 
-      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch);
+      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
     });
   }
 
-  static request(init, dispatch) {
+  static request(init, dispatch, effect) {
     return new BPromise((resolve, reject) => {
       let baseURL = init.baseURL || config.api.baseURL;
 
@@ -134,7 +150,7 @@ class ReactHelper {
         options.body = JSON.stringify(init.body);
       }
 
-      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch);
+      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
     });
   }
 

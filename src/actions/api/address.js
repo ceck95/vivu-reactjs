@@ -21,7 +21,7 @@ let apiAddressActions = {
       return helpers.requestBasic({
         uri: `/provinces?filter[country]=${config.i18n.country}`,
         method: 'GET'
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         return dispatch(addressActions.setDataProvinces(data));
       });
 
@@ -32,7 +32,7 @@ let apiAddressActions = {
       return helpers.requestBasic({
         uri: `/districts?filter[country]=${config.i18n.country}&filter[province]=${province}`,
         method: 'GET'
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         if (autoCheck) {
           return dispatch(addressActions.setDataDistricts(data, address, {
             checkDistrict: loadStatusComponent.autoCheckDistrict
@@ -48,7 +48,7 @@ let apiAddressActions = {
       return helpers.requestBasic({
         uri: `/wards?filter[country]=${config.i18n.country}&filter[province]=${province}&filter[district]=${district}`,
         method: 'GET'
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         if (autoCheck) {
           return dispatch(addressActions.setDataWards(data, address, {
             checkWard: loadStatusComponent.autoCheckWard
@@ -64,7 +64,7 @@ let apiAddressActions = {
       return helpers.request({
         uri: '/customer-address',
         method: 'GET'
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         return dispatch(addressActions.setDataAddress(data.customerAddress));
       });
     };
@@ -82,7 +82,7 @@ let apiAddressActions = {
         body: {
           data: address
         }
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         dispatch(addressActions.setItemDataListAddress(data.customerAddress, removeList));
         dispatch(checkoutActions.setAddressToCheckout(data.customerAddress, true, loadStatus.assignDataLoad));
         return null;
@@ -102,7 +102,7 @@ let apiAddressActions = {
           body: {
             data: address
           }
-        }, dispatch).then(data => {
+        }, dispatch, true).then(data => {
           return dispatch(addressActions.updateListAddress(data, dataAddress));
         });
       };
@@ -113,7 +113,7 @@ let apiAddressActions = {
       return helpers.request({
         uri: `/customer-address/${id}`,
         method: 'DELETE',
-      }, dispatch).then(() => {
+      }, dispatch, true).then(() => {
         return dispatch(addressActions.removeItemAddress(id, address));
       });
     };

@@ -6,19 +6,12 @@
 * @Last modified time: 2017-03-16T08:13:08+07:00
 */
 
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
-import {
-  Grid,
-  Row,
-  Col,
-  Panel,
-  Button,
-  ButtonToolbar
-} from 'react-bootstrap';
-import {Link} from 'react-router';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { Grid, Row, Col, Panel, Button, ButtonToolbar} from 'react-bootstrap';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import actions from '../../actions/index';
 import ReactBase from 'react-base';
 
@@ -27,6 +20,7 @@ import Body from './body/home/index';
 
 import '../../static/sass/main.sass';
 import '../../static/css/slide-codrops.css';
+import '../../static/css/effect-loading.css';
 
 class Main extends Component {
 
@@ -56,6 +50,9 @@ class Main extends Component {
 
 }
 
-let mapRedux = new ReactBase.helpers.mapRedux({actions: actions, bindActionCreators: bindActionCreators});
+let mapRedux = new ReactBase.helpers.mapRedux({
+  actions: actions,
+  bindActionCreators: bindActionCreators
+});
 
 export default connect(mapRedux.mapStateToProps, mapRedux.mapDispatchToProps)(Main);

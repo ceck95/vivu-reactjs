@@ -29,7 +29,7 @@ let apiLoginActions = {
             password: data.password
           }
         }
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         dispatch(popUpActions.setStatePopupLogin(ReactBase.helpers.Data.assign(statePopup, {
           disableButtonLogin: buttonStatus.clickedSuccess
         })));
@@ -72,7 +72,7 @@ let apiLoginActions = {
             }
           }
         }
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         dispatch(popUpActions.setStatePopupLogin(ReactBase.helpers.Data.assign(statePopup, {
           disableButtonSignin: buttonStatus.clickedSuccess
         })));
@@ -111,7 +111,7 @@ let apiLoginActions = {
       return helpers.request({
         uri: '/customers/logout',
         method: 'POST'
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         dispatch(loginActions.logout());
         dispatch(apiQuoteActions.getQuote());
         dispatch(push('/'));
@@ -126,7 +126,7 @@ let apiLoginActions = {
         body: {
           data: form
         }
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         dispatch(loginActions.setDataLoginSuccess(data));
         dispatch(notifyActions.setDataNotify({
           uiMessage: `Profile update successfully`,

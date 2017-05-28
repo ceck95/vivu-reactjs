@@ -19,6 +19,12 @@ let loadActions = {
     return {
       type: type.statusLoadingCategoryGroup
     }
+  },
+  statusLoadingPage: (status) => {
+    return {
+      type: type.statusLoadingPage,
+      status: status
+    }
   }
 };
 
