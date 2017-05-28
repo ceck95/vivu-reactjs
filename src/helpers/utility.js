@@ -48,6 +48,23 @@ class Utility {
     return baseUrl;
   }
 
+  static getUrlKey(itemCurrent, dataCategoryGroup) {
+    let link = '';
+    if (dataCategoryGroup.length > 0) {
+      for (let a of dataCategoryGroup) {
+        if (a.categories ? a.categories.length > 0 : false) {
+          for (let b of a.categories) {
+            if (itemCurrent.categoryId === b.id) {
+              link = `${a.urlKey}/${b.urlKey}/${itemCurrent.urlKey}`
+              break;
+            }
+          }
+        }
+      }
+      return link;
+    }
+  }
+
 }
 
 export default Utility;

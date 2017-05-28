@@ -199,14 +199,19 @@ class Cart extends Component {
 			dataQuoteCart = this.state.dataQuoteCart;
 		if (this.state.dataQuoteCart.length > 0) {
 			for (let e of dataQuoteCart) {
+				let urlProductCurrent = utility.getUrlKey(e.product, this.props.categoryGroup);
 				listElement.push(
 					<div className="row cart_item" key={ e.id }>
        <div className="col-sm-4">
+         <Link to={ urlProductCurrent }>
          <img src={ `${config.cdn.link}${e.product.imagePath}` } alt="" className="img-responsive cart_img" />
+         </Link>
        </div>
        <div className="col-sm-4">
          <div className="cart_information">
+           <Link to={ urlProductCurrent }>
            <h4 className="cart-name">{ e.product.name }</h4>
+           </Link>
            <p>Cung cấp bởi Vivu</p>
            <button onClick={ this.removeQuoteItem.bind(this, e) } className="cart-input-wrap_icon">
              <i className="fa fa-trash-o" aria-hidden="true"></i>

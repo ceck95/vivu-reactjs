@@ -85,21 +85,8 @@ class ListProduct extends Component {
 
   }
   getUrlKey(e) {
-    let dataCategoryGroup = this.state.dataCategoryGroup,
-      link = '';
-    if (dataCategoryGroup.length > 0) {
-      for (let a of dataCategoryGroup) {
-        if (a.categories ? a.categories.length > 0 : false) {
-          for (let b of a.categories) {
-            if (e.categoryId === b.id) {
-              link = `${a.urlKey}/${b.urlKey}/${e.urlKey}`
-              break;
-            }
-          }
-        }
-      }
-      return link;
-    }
+    let dataCategoryGroup = this.state.dataCategoryGroup;
+    return utility.getUrlKey(e, dataCategoryGroup);
   }
 
   render() {
