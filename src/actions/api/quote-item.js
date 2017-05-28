@@ -49,7 +49,7 @@ let apiQuoteItemActions = {
         body: {
           data: data
         }
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         data.delete = true;
         dispatch(quoteItemActions.setDataQuoteItem(data, dataQuoteCart));
         dispatch(quoteActions.updateDataQuote(ReactBase.helpers.Data.assign(dataQuote, {
@@ -79,7 +79,7 @@ let apiQuoteItemActions = {
             quantity: data.quantity
           }
         }
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         dispatch(quoteItemActions.setDataQuoteItem(data, dataQuoteCart));
         dispatch(quoteActions.updateDataQuote(ReactBase.helpers.Data.assign(dataQuote, {
           loadDataCartStatus: loadStatus.assignDataLoad
