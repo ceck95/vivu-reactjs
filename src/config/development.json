@@ -14,7 +14,7 @@
     "effectLoadListProduct": false,
     "distanceYear": 120,
     "countItemSlideHeaderInfoOfPageDetail": 4,
-    "limitListProductOfPageDetail": 5,
+    "limitListProductOfPageDetail": 6,
     "maxQuantity": 1000,
     "defaultActiveTabCustomerInfo": "user",
     "filterItemPrice": 5,
