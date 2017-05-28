@@ -30,7 +30,7 @@ let apiQuoteActions = {
 
     }
   },
-  checkout: (data) => {
+  checkout: (data, isAuthenticated) => {
     return (dispatch) => {
       return helpers.requestMerge({
         uri: '/quotes/checkout',
@@ -46,7 +46,10 @@ let apiQuoteActions = {
           type: 'success',
           show: true
         }));
-        dispatch(orderActionsApi.getOrders());
+        console.log(isAuthenticated);
+        if (isAuthenticated) {
+          dispatch(orderActionsApi.getOrders());
+        }
         return null;
       }).catch(() => {
         dispatch(apiQuoteActions.getQuote());

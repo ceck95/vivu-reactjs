@@ -62,7 +62,7 @@ class Method extends Component {
         checkoutMethod: checkoutMethod.cashOnDelivery,
         customerAddressId: address.id,
         quoteId: dataQuote.quote.id
-      });
+      }, this.props.dataLogin.isAuthenticated);
     }
   }
 

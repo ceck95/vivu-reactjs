@@ -82,8 +82,8 @@ class CheckOut extends Component {
         <hr/>
         <div className="container main">
           { this.state.showCheckout ?
-            <Method actions={ this.props.actions } dataAddress={ this.props.dataAddress } dataCheckout={ this.props.dataCheckout } dataQuote={ this.props.dataQuote } dataQuoteCart={ this.props.dataQuoteCart }
-            /> :
+            <Method dataLogin={ this.props.dataLogin } actions={ this.props.actions } dataAddress={ this.props.dataAddress } dataCheckout={ this.props.dataCheckout } dataQuote={ this.props.dataQuote }
+              dataQuoteCart={ this.props.dataQuoteCart } /> :
             <Address listAddress={ this.state.listAddress } actions={ this.props.actions } dataCheckout={ this.props.dataCheckout } dataAddress={ this.props.dataAddress } dataLogin={ this.props.dataLogin }
             /> }
         </div>
