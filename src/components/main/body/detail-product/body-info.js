@@ -86,7 +86,7 @@ class BodyInfo extends Component {
               : '' }
             <p className="margin-top">Số lượng:</p>
             <input type="number" onChange={ this.setQuantity.bind(this) } ref="quantity" defaultValue="1" className="input-number" />
-            <button className="btn-add-cart red" onClick={ this.addToCart.bind(this) }>
+            <button disabled={ this.state.dataProductDetail ? true : false } className="btn-add-cart red" onClick={ this.addToCart.bind(this) }>
               <i className="fa fa-cart-plus" aria-hidden="true"></i>
               <div>Thêm vào giỏ hàng</div>
             </button>

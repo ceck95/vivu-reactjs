@@ -1,6 +1,6 @@
 {
   "api": {
-    "baseURL": "http://vivu.dev/api",
+    "baseURL": "http://vivu.nhutuit.com/api",
     "clientId": "VmpGamQyVkhTWGROVm1oV1lUSm9jVlV3WXpSUFVUMDk="
   },
   "cdn": {
