@@ -249,8 +249,8 @@ class BodyPageListProduct extends Component {
         <div className="col-sm-9 col-md-8 pull-right main_lists">
           <h2 className="main_lists_title">{ this.state.itemMenuCurrent.name }</h2>
           <div className="main_lists_group-btn">
-            <button onClick={ this.filterPrice.bind(this, 'desc') } className="btn-default pull-left">Giá cao nhất</button>
-            <button onClick={ this.filterPrice.bind(this, 'asc') } className="btn-default pull-left">Giá thấp nhất</button>
+            <button onClick={ this.filterPrice.bind(this, 'asc') } className="btn-default pull-left">Giá cao nhất</button>
+            <button onClick={ this.filterPrice.bind(this, 'desc') } className="btn-default pull-left">Giá thấp nhất</button>
           </div>
           <div className="row">
             { this.state.dataListProduct.length > 0
