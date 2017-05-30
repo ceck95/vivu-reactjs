@@ -72,10 +72,11 @@ class BodyPageListProduct extends Component {
     });
   }
 
-  handleSearchProduct(searchKey) {
+  handleSearchProduct(searchKey, props) {
     this.handleEffect();
     let categoryGroupId = this.props.searchMenuCategory.categoryGroupCurrent.id,
-      query = this.props.routing.locationBeforeTransitions.query;
+      query = props ? props.routing.locationBeforeTransitions.query : this.props.routing.locationBeforeTransitions.query;
+
     this.props.actions.getProductSearch(searchKey, categoryGroupId, 1, this.props.loadProduct, null, this.props.searchMenuCategory, query);
 
     this.setState({
@@ -202,9 +203,9 @@ class BodyPageListProduct extends Component {
 
     if (searchKey) {
       if (nextProps.searchMenuCategory.categoryGroupCurrent.statusLoad === loadStatus.startLoad) {
-        this.handleSearchProduct(searchKey);
+        this.handleSearchProduct(searchKey, nextProps);
       } else if (this.checkLoadFilter(nextProps)) {
-        this.handleSearchProduct(searchKey);
+        this.handleSearchProduct(searchKey, nextProps);
       }
     } else {
 

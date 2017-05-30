@@ -108,7 +108,7 @@ class ListProduct extends Component {
               <p className="price-current bold">
                 { utility.formatCurrency(e.basePrice) }
               </p>
-              <button disabled={ e.isSoldOut ? true : false } className="add-to-cart" onClick={ this.addToCart.bind(this, e) }>
+              <button disabled={ e.isSoldOut ? true : false } className='add-to-cart' onClick={ this.addToCart.bind(this, e) }>
                 <i className="fa fa-cart-plus" aria-hidden="true"></i>Thêm vào giỏ hàng</button>
             </div>
           </div>
