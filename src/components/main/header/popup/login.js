@@ -18,7 +18,8 @@ class Login extends Component {
     super(props);
     this.state = {
       disableButtonLogin: null,
-      form: {}
+      form: {},
+      showForgotPassword: false
     }
   }
 
@@ -66,12 +67,14 @@ class Login extends Component {
       form.email = null;
     }
 
-    if (helpers.Data.isEmpty(data.password)) {
-      form.password = this.renderError('Không được bỏ trống');
-    } else if (data.password.length <= config.security.passwordLength) {
-      form.password = this.renderError(`Độ dài password phải lớn hơn ${config.security.passwordLength}`);
-    } else {
-      form.password = null;
+    if (data.password) {
+      if (helpers.Data.isEmpty(data.password)) {
+        form.password = this.renderError('Không được bỏ trống');
+      } else if (data.password.length <= config.security.passwordLength) {
+        form.password = this.renderError(`Độ dài password phải lớn hơn ${config.security.passwordLength}`);
+      } else {
+        form.password = null;
+      }
     }
 
     this.setState({
@@ -104,12 +107,29 @@ class Login extends Component {
     }));
   }
 
+  forgotPassword() {
+    this.setState({
+      showForgotPassword: !this.state.showForgotPassword
+    })
+  }
+
+  forgot() {
+    let data = {
+      email: this.refs.email.value
+    };
+    this.checkFormLogin(data);
+    if (helpers.Data.isEmptyObject(this.state.form)) {
+      this.props.actions.forgot(data, this.props.statePopup);
+    }
+
+  }
+
   render() {
     return (
       <div className="modal popup-login">
         <div className="popup_wrap col-xs-8 col-sm-6 col-md-5 col-lg-4">
           <div className="modal_wrap">
-            <h1 className="login_title">Đăng nhập</h1>
+            <h1 className="login_title">{ this.state.showForgotPassword ? 'Quên mật khẩu' : 'Đăng nhập' }</h1>
             <p>
               Bạn chưa có tài khoản ?
               <a className="link" onClick={ this.showPopupSignin.bind(this) }>
@@ -121,34 +141,48 @@ class Login extends Component {
               <div className="login_items">
                 <input type="text" placeholder="Nhập Email" ref="email" />
                 <span className="icon">
-                                                                                                <i className="fa fa-envelope" aria-hidden="true"></i>
-                                                                                              </span>
+                                                                                                                                                      <i className="fa fa-envelope" aria-hidden="true"></i>
+                                                                                                                                                    </span>
                 <span className="line"></span>
               </div>
               { this.state.form.email
                 ? this.state.form.email
                 : '' }
             </div>
-            <div className="require-wrap">
-              <p>Password</p>
-              <div className="login_items">
-                <input type="password" placeholder="Nhập mật khẩu" ref="password" />
-                <span className="icon">
-                                                                                                <i className="fa fa-lock" aria-hidden="true"></i>
-                                                                                              </span>
-                <span className="line"></span>
-              </div>
-              { this.state.form.password
-                ? this.state.form.password
-                : '' }
-            </div>
-            <p>Quên mật khẩu? Nhấn vào
-              <a href="#">
-                { ' ' }Đây</a>
-            </p>
-            <button className="btn-login" onClick={ this.login.bind(this) } disabled={ this.state.disableButtonLogin }>
-              <div>Đăng nhập</div>
-            </button>
+            { this.state.showForgotPassword ?
+              ''
+              :
+              <div className="require-wrap">
+                <p>Password</p>
+                <div className="login_items">
+                  <input type="password" placeholder="Nhập mật khẩu" ref="password" />
+                  <span className="icon">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <i className="fa fa-lock" aria-hidden="true"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </span>
+                  <span className="line"></span>
+                </div>
+                { this.state.form.password
+                  ? this.state.form.password
+                  : '' }
+              </div> }
+            { this.state.showForgotPassword ?
+              <p>Đăng nhập? Nhấn vào
+                <a className="link" onClick={ this.forgotPassword.bind(this) }>
+                  { ' ' }Đây</a>
+              </p>
+              :
+              <p>Quên mật khẩu? Nhấn vào
+                <a className="link" onClick={ this.forgotPassword.bind(this) }>
+                  { ' ' }Đây</a>
+              </p> }
+            { this.state.showForgotPassword ?
+              <button className="btn-login" onClick={ this.forgot.bind(this) } disabled={ this.state.disableButtonLogin }>
+                <div>Lấy mật khẩu</div>
+              </button>
+              :
+              <button className="btn-login" onClick={ this.login.bind(this) } disabled={ this.state.disableButtonLogin }>
+                <div>Đăng nhập</div>
+              </button> }
             <button className="modal_btn-close popup-login_btn-close" onClick={ this.closePopup.bind(this) }>
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>

@@ -51,6 +51,33 @@ let apiLoginActions = {
 
     }
   },
+  forgot: (data, statePopup) => {
+
+    return (dispatch) => {
+      return helpers.requestBasic({
+        uri: '/customers/forgot-password',
+        method: 'POST',
+        body:{
+          data:{
+            login:data.email
+          }
+        }
+      }, dispatch, true).then(data => {
+
+        dispatch(notifyActions.setDataNotify({
+          uiMessage: `Đã gửi mật khẩu vào email của bạn. Vui lòng kiểm tra email`,
+          type: 'success',
+          show: true
+        }));
+
+        dispatch(popUpActions.setStatePopupLogin(ReactBase.helpers.Data.assign(statePopup, {
+          login: false
+        })));
+
+      });
+    }
+
+  },
   signin: (data, statePopup) => {
     return (dispatch) => {
       return helpers.requestBasic({
