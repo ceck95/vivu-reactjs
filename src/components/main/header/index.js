@@ -269,10 +269,15 @@ class Header extends Component {
           : '' }
         { this.state.loading ?
           <div className="background-css">
-            <div className="cssload-loader">
-              <div className="cssload-inner cssload-one"></div>
-              <div className="cssload-inner cssload-two"></div>
-              <div className="cssload-inner cssload-three"></div>
+            <div className="cssload-pgloading">
+              <div className="cssload-loadingwrap">
+                <ul className="cssload-bokeh">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
             </div>
           </div>
           :

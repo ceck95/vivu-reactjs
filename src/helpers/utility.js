@@ -1,5 +1,7 @@
 import config from '../config/index';
-import { helpers } from 'react-base';
+import {
+  helpers
+} from 'react-base';
 
 class Utility {
 
@@ -63,6 +65,14 @@ class Utility {
       }
       return link;
     }
+  }
+
+  static respErrorCartSoldOut(props,product) {
+    props.actions.setDataNotify({
+      uiMessage: `${product.name} đã hết hàng`,
+      types: 'errors',
+      show: true
+    });
   }
 
 }

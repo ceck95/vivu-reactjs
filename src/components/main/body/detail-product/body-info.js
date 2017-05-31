@@ -55,11 +55,16 @@ class BodyInfo extends Component {
   addToCart() {
     let item = this.props.dataProductDetail;
     if (this.state.quantity > 0 && this.state.productColorId) {
-      this.props.actions.setQuoteItem({
-        productId: item.id,
-        selectedProductColorId: this.state.productColorId,
-        quantity: this.state.quantity
-      }, this.props.dataQuoteCart, this.props.dataQuote);
+      if (item.isSoldOut) {
+        utility.respErrorCartSoldOut(this.props, item);
+      } else {
+        this.props.actions.setQuoteItem({
+          productId: item.id,
+          selectedProductColorId: this.state.productColorId,
+          quantity: this.state.quantity
+        }, this.props.dataQuoteCart, this.props.dataQuote);
+      }
+
     }
 
   }
@@ -86,7 +91,7 @@ class BodyInfo extends Component {
               : '' }
             <p className="margin-top">Số lượng:</p>
             <input type="number" onChange={ this.setQuantity.bind(this) } ref="quantity" defaultValue="1" className="input-number" />
-            <button disabled={ this.state.dataProductDetail ? true : false } className="btn-add-cart red" onClick={ this.addToCart.bind(this) }>
+            <button className="btn-add-cart red" onClick={ this.addToCart.bind(this) }>
               <i className="fa fa-cart-plus" aria-hidden="true"></i>
               <div>Thêm vào giỏ hàng</div>
             </button>

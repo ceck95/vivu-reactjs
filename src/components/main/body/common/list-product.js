@@ -22,6 +22,7 @@ import config from '../../../../config/index';
 import utility from '../../../../helpers/utility';
 
 import Image from './image';
+import ImageSoldOut from '../../../../static/images/badge-sold-out.png'
 
 class ListProduct extends Component {
 
@@ -73,12 +74,19 @@ class ListProduct extends Component {
 
   addToCart(e) {
     if (!e.isProductColor)
+    
       if (e.productColor ? e.productColor.id : false) {
-        this.props.actions.setQuoteItem({
-          productId: e.id,
-          selectedProductColorId: e.productColor.id,
-          quantity: 1
-        }, this.props.dataQuoteCart, this.props.dataQuote);
+
+        if (e.isSoldOut) {
+          utility.respErrorCartSoldOut(this.props, e);
+        } else {
+          this.props.actions.setQuoteItem({
+            productId: e.id,
+            selectedProductColorId: e.productColor.id,
+            quantity: 1
+          }, this.props.dataQuoteCart, this.props.dataQuote);
+        }
+
     }
 
   }
@@ -102,13 +110,17 @@ class ListProduct extends Component {
               <Link className="link-img" to={ `/${productKey}` }>
               <Image linkImage={ e.imagePath } />
               </Link>
+              { e.isSoldOut ?
+                <img src={ ImageSoldOut } className="icon-sold-out" />
+                :
+                '' }
               <Link to={ `/${productKey}` } className="link-text">
               { e.name }
               </Link>
               <p className="price-current bold">
                 { utility.formatCurrency(e.basePrice) }
               </p>
-              <button disabled={ e.isSoldOut ? true : false } className='add-to-cart' onClick={ this.addToCart.bind(this, e) }>
+              <button className='add-to-cart' onClick={ this.addToCart.bind(this, e) }>
                 <i className="fa fa-cart-plus" aria-hidden="true"></i>Thêm vào giỏ hàng</button>
             </div>
           </div>
