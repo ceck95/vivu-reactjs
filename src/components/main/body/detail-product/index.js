@@ -93,6 +93,7 @@ class DetailProduct extends Component {
   }
 
   render() {
+    let slide = this.state.dataProductDetail.products ? this.state.dataProductDetail.products.length > 0 ? true : false : false;
     return (
       <div className="container main main-other">
         { Object.keys(this.state.dataProductDetail).length > 0 ?
@@ -108,8 +109,13 @@ class DetailProduct extends Component {
               <Detail routing={ this.props.routing } dataProductDetail={ this.state.dataProductDetail.product } />
               <div className="clear-fix"></div>
               <hr className="margin-top-bottom" />
-              <h3 className="title">Sản phẩm liên quan</h3>
-              <Slide dataListProduct={ this.state.dataProductDetail.products } dataBreadCrumb={ this.state.dataBreadCrumb } />
+              { slide ?
+                <h3 className="title">Sản phẩm liên quan</h3>
+                :
+                '' }
+              { slide ?
+                <Slide dataListProduct={ this.state.dataProductDetail.products } dataBreadCrumb={ this.state.dataBreadCrumb } />
+                : '' }
             </div>
           </div>
           :
