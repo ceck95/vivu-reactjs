@@ -210,7 +210,7 @@ class Cart extends Component {
        <div className="col-sm-4">
          <div className="cart_information">
            <Link to={ urlProductCurrent }>
-           <h4 className="cart-name">{ e.product.name }</h4>
+           <h4 className="cart-name">{ e.product.name }{ e.product.isSoldOut ? ' (Hết hàng) ' : '' }</h4>
            </Link>
            <p>Cung cấp bởi Vivu</p>
            <button onClick={ this.removeQuoteItem.bind(this, e) } className="cart-input-wrap_icon">

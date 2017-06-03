@@ -104,7 +104,7 @@ class Method extends Component {
                 <input type="radio" defaultChecked className="radio-wrap" />
                 <label className="label-radio">
                   <span className="icon"></span>
-                  <p>Giao hàng tiêu chuẩn (dự kiến giao hàng vào Thứ năm, 06/04/2017 - Thứ sáu, 07/04/2017): Miễn Phí</p>
+                  <p>Giao hàng tiêu chuẩn (dự kiến giao hàng vào trong vòng 7 ngày): Miễn Phí</p>
                 </label>
               </div>
             </div>

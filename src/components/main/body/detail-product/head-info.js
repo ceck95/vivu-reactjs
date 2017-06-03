@@ -37,7 +37,7 @@ class HeadInfo extends Component {
         styleImageZoom: {
           backgroundPosition: `${ - posX}px ${ - posY}px`,
           display: 'block',
-          backgroundImage: `url(${this.state.imageZoom})`
+          backgroundImage: `url('${this.state.imageZoom}')`
         }
       });
     } else {
@@ -70,6 +70,10 @@ class HeadInfo extends Component {
     });
   }
 
+  share(){
+    window.open (`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,"mywindow","menubar=1,resizable=1,width=500,height=500")
+  }
+
   render() {
     return (
       <div className="col-sm-4 detail-images">
@@ -80,9 +84,11 @@ class HeadInfo extends Component {
         </div>
         <div className="detail-img_group-btn">
           <div className="btn-wrap">
-            <button className="btn-default btn-save-in-fb">
-              <i className="fa fa-bookmark-o" aria-hidden="true"></i> Save in facebook
-            </button>
+            <a onClick={this.share.bind(this)}>
+              <button className="btn-default btn-save-in-fb">
+                <i className="fa fa-bookmark-o" aria-hidden="true"></i> Save in facebook
+              </button>
+            </a>
           </div>
         </div>
       </div>
