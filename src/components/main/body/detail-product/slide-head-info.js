@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 
 import config from '../../../../config/index';
 import { helpers } from 'react-base';
+import Image from '../common/image';
 
 class SlideHeadInfo extends Component {
 
@@ -149,7 +150,9 @@ class SlideHeadInfo extends Component {
 		if (this.state.dataSlideProductColorPreviewImage.length > 0) {
 			this.state.dataSlideProductColorPreviewImage.forEach((e, i) => {
 				listSlide.push(
-					<div key={ i } className="slider-detail_img" onClick={ this.setProductColorPreviewImage.bind(this, e) } style={ this.state.styleSlider }><img src={ `${config.cdn.link}${e.imagePath}` } alt="" className="img-responsive" /></div>
+					<div key={ i } className="slider-detail_img" onClick={ this.setProductColorPreviewImage.bind(this, e) } style={ this.state.styleSlider }>
+       <Image linkImage={ e.imagePath } />
+     </div>
 				)
 			})
 			return (
