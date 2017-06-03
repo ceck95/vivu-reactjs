@@ -38,7 +38,7 @@ let apiQuoteActions = {
         body: {
           data: data
         }
-      }, dispatch).then(data => {
+      }, dispatch, true).then(data => {
         dispatch(apiQuoteActions.getQuote());
         dispatch(push('/'));
         dispatch(notifyActions.setDataNotify({
