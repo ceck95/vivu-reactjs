@@ -30,6 +30,7 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.statePopup.disableButtonLogin);
     if (nextProps.statePopup.disableButtonLogin === buttonStatus.click) {
       this.setState({
         disableButtonLogin: true
@@ -50,7 +51,6 @@ class Login extends Component {
         disableButtonLogin: buttonStatus.available
       }));
     }
-
   }
 
   renderError(message) {

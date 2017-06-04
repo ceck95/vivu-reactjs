@@ -85,7 +85,7 @@ class Customer extends Component {
             <Info dataLogin={ customerData } actions={ this.props.actions } />
             : '' }
           { this.state.activeTab === 'order' ?
-            <Order dataCustomer={ customerData } actions={ this.props.actions } dataOrder={ this.props.dataOrder } /> :
+            <Order dataCustomer={ customerData } dataCategoryGroup={ this.props.categoryGroup } actions={ this.props.actions } dataOrder={ this.props.dataOrder } /> :
             '' }
         </div>
       </div>

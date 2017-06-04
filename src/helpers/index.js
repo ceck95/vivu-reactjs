@@ -38,8 +38,8 @@ class ReactHelper {
           error.show = true;
           // let errorResp = new Error(error);
           dispatch(notifyActions.setDataNotify(error));
-
-          return null;
+  
+          return reject(new Error(error || 'error undefined'));
         },
         respError = null,
         error = {};

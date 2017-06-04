@@ -77,7 +77,7 @@ class OrderCustomer extends Component {
           <tr key={ i }>
             <td>
               <a onClick={ this.detailOrder.bind(this, e) } className="link">
-                { e.code }
+                { `#${e.code }` }
               </a>
             </td>
             <td>
@@ -87,7 +87,7 @@ class OrderCustomer extends Component {
               { this.getStringProduct(e.orderItems) }
             </td>
             <td>
-              { `${e.grandTotal} đ` }
+              { Utility.formatCurrency(e.grandTotal) }
             </td>
             <td>
               { Utility.translateStatusOrder(e.orderStatus) }
@@ -119,7 +119,7 @@ class OrderCustomer extends Component {
               </table>
             </div>
           </div>
-          : <DetailOrder dataCustomer={ this.state.dataCustomer } detailOrder={ this.state.detailOrder } /> }
+          : <DetailOrder dataCategoryGroup={ this.props.dataCategoryGroup } dataCustomer={ this.state.dataCustomer } detailOrder={ this.state.detailOrder } /> }
       </div>
       );
 

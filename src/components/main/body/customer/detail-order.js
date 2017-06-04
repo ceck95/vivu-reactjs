@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Utility from '../../../../helpers/utility';
 import methodCheckOut from '../../../../const/check-out';
 import config from '../../../../config/index';
+import { Link } from 'react-router';
 
 class CustomerDetailOrder extends Component {
 
@@ -59,21 +60,21 @@ class CustomerDetailOrder extends Component {
           <tr key={ i }>
             <td className="item-center">
               <img src={ `${cdnLink}${e.product.imagePath}` } alt="" className="tbl-img img-responsive" />
-              <a className="link-underline" href="#">
-                { e.product.name }
-              </a>
+              <Link className="link-underline" to={ Utility.getUrlKey(e.product, this.props.dataCategoryGroup) }>
+              { e.product.name }
+              </Link>
             </td>
             <td>
               { e.product.sku }
             </td>
             <td>
-              { e.basePrice }
+              { Utility.formatCurrency(e.basePrice) }
             </td>
             <td>
               { e.quantity }
             </td>
             <td>
-              { e.basePrice }
+              { Utility.formatCurrency(e.basePrice) }
             </td>
           </tr>
         )
@@ -88,10 +89,10 @@ class CustomerDetailOrder extends Component {
             <h3 className="title">Địa chỉ người nhận</h3>
             <div className="detail-box">
               <h4>{ addressShipping.customerName }</h4>
-              <p className="m-b-15">Địa chỉ:
+              <p className="m-b-15">Địa chỉ:{` `}
                 { addressShipping.fullName }
               </p>
-              <p>Điện thoại:
+              <p>Điện thoại:{` `}
                 { addressShipping.phone }
               </p>
             </div>
@@ -103,7 +104,7 @@ class CustomerDetailOrder extends Component {
                 Vận chuyển tiết kiệm
               </p>
               <p>Phí vận chuyển:
-                { infoDetail.shippingAmount }
+                { Utility.formatCurrency(infoDetail.shippingAmount) }
               </p>
             </div>
           </div>
@@ -139,13 +140,13 @@ class CustomerDetailOrder extends Component {
                 </td>
                 <td colSpan="1" className="left-text">
                   <p className="m-b-8">
-                    { `${infoDetail.subtotal} đ` }
+                    { Utility.formatCurrency(infoDetail.subtotal) }
                   </p>
                   <p className="m-b-8">
-                    { `${infoDetail.shippingAmount} đ` }
+                    { Utility.formatCurrency(infoDetail.shippingAmount) }
                   </p>
                   <p className="m-b-8 red bold">
-                    { `${infoDetail.grandTotal} đ` }
+                    { Utility.formatCurrency(infoDetail.grandTotal) }
                   </p>
                 </td>
               </tr>
