@@ -146,11 +146,12 @@ class SlideHeadInfo extends Component {
 	// }
 
 	render() {
-		let listSlide = [];
+		let listSlide = [],
+			heightImg = this.state.styleSlider.height - 10;
 		if (this.state.dataSlideProductColorPreviewImage.length > 0) {
 			this.state.dataSlideProductColorPreviewImage.forEach((e, i) => {
 				listSlide.push(
-					<div key={ i } style={ this.state.styleSlider } className="slider-detail_img" onClick={ this.setProductColorPreviewImage.bind(this, e) }><img style={ { height: this.state.styleSlider.height - 10 } } src={ `${config.cdn.link}${e.imagePath}` } alt="" className="img-responsive" /></div>
+					<div key={ i } style={ this.state.styleSlider } className="slider-detail_img" onClick={ this.setProductColorPreviewImage.bind(this, e) }><img style={ { height: heightImg ? heightImg : null } } src={ `${config.cdn.link}${e.imagePath}` } alt="" className="img-responsive" /></div>
 				)
 			})
 			return (

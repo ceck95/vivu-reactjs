@@ -17,142 +17,141 @@ import loadStatus from '../const/load-status';
 
 class ReactHelper {
 
-  static get basicToken() {
-    return `Basic ${config.api.clientId}`;
-  }
+	static get basicToken() {
+		return `Basic ${config.api.clientId}`;
+	}
 
-  static responseFunc(options, reject, resolve, baseURL, init, dispatch, effect) {
-    let code = null;
+	static responseFunc(options, reject, resolve, baseURL, init, dispatch, effect) {
+		let code = null;
 
-    ReactHelper.handleEffect(effect, dispatch, null);
+		ReactHelper.handleEffect(effect, dispatch, null);
 
-    return fetch(`${baseURL}${init.uri}`, options).then((response) => {
-      code = response.status;
-      return response.json();
-    }).then((data) => {
+		return fetch(`${baseURL}${init.uri}`, options).then((response) => {
+			code = response.status;
+			return response.json();
+		}).then((data) => {
 
-      ReactHelper.handleEffect(effect, dispatch, true);
+			ReactHelper.handleEffect(effect, dispatch, true);
 
-      let responseError = (dispatch, error) => {
-          error.types = 'errors';
-          error.show = true;
-          // let errorResp = new Error(error);
-          dispatch(notifyActions.setDataNotify(error));
-  
-          return reject(new Error(error || 'error undefined'));
-        },
-        respError = null,
-        error = {};
+			let responseError = (dispatch, error) => {
+					error.types = 'errors';
+					error.show = true;
+					// let errorResp = new Error(error);
+					dispatch(notifyActions.setDataNotify(error));
+					return reject(new Error(error || 'error undefined'));
+				},
+				respError = null,
+				error = {};
+			switch (code) {
+				case 401:
+					dispatch(loginActions.logout());
+					window.location = '/';
+					respError = true;
+					error = data;
+					break;
+				default:
+					if (data.errors) {
+						respError = true;
+						error = data.errors[0];
+					}
+					break;
+			}
 
-      switch (code) {
-        case 401:
-          dispatch(loginActions.logout());
-          respError = true;
-          error = data;
-          break;
-        default:
-          if (data.errors) {
-            respError = true;
-            error = data.errors[0];
-          }
-          break;
-      }
+			if (respError) {
+				return responseError(dispatch, error);
+			}
 
-      if (respError) {
-        return responseError(dispatch, error);
-      }
+			if (data.meta.pageNumber) {
+				return resolve(data);
+			}
+			return resolve(data.data);
+		}).catch((ex) => {
+			return reject(ex);
+		});
+	}
 
-      if (data.meta.pageNumber) {
-        return resolve(data);
-      }
-      return resolve(data.data);
-    }).catch((ex) => {
-      return reject(ex);
-    });
-  }
+	static handleEffect(bool, dispatch, after) {
+		if (after) {
+			return bool ? dispatch(loadingAction.statusLoadingPage(loadStatus.available)) : null;
+		}
+		if (bool) {
+			return dispatch(loadingAction.statusLoadingPage(loadStatus.startLoad))
+		}
+	}
 
-  static handleEffect(bool, dispatch, after) {
-    if (after) {
-      return bool ? dispatch(loadingAction.statusLoadingPage(loadStatus.available)) : null;
-    }
-    if (bool) {
-      return dispatch(loadingAction.statusLoadingPage(loadStatus.startLoad))
-    }
-  }
+	static requestMerge(init, dispatch, effect) {
+		return new BPromise((resolve, reject) => {
 
-  static requestMerge(init, dispatch, effect) {
-    return new BPromise((resolve, reject) => {
+			if (localStorage.getItem(config.login.keyAccessToken)) {
+				init.token = `Bearer ${localStorage.getItem(config.login.keyAccessToken)}`;
+			}
 
-      if (localStorage.getItem(config.login.keyAccessToken)) {
-        init.token = `Bearer ${localStorage.getItem(config.login.keyAccessToken)}`;
-      }
+			let baseURL = init.baseURL || config.api.baseURL,
+				options = {
+					method: init.method,
+					headers: {
+						'Authorization': init.token || ReactHelper.basicToken,
+						'Content-Type': 'application/json',
+						'Accept': 'application/json'
+					}
+				};
 
-      let baseURL = init.baseURL || config.api.baseURL,
-        options = {
-          method: init.method,
-          headers: {
-            'Authorization': init.token || ReactHelper.basicToken,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          }
-        };
+			if (init.body) {
+				options.body = JSON.stringify(init.body);
+			}
 
-      if (init.body) {
-        options.body = JSON.stringify(init.body);
-      }
+			return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
+		});
+	}
 
-      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
-    });
-  }
+	static requestBasic(init, dispatch, effect) {
+		return new BPromise((resolve, reject) => {
+			let baseURL = null;
+			if (init.baseURL) {
+				baseURL = init.baseURL;
+			} else {
+				baseURL = config.api.baseURL;
+			}
+			let options = {
+				method: init.method,
+				headers: {
+					'Authorization': init.token || ReactHelper.basicToken,
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				}
+			};
 
-  static requestBasic(init, dispatch, effect) {
-    return new BPromise((resolve, reject) => {
-      let baseURL = null;
-      if (init.baseURL) {
-        baseURL = init.baseURL;
-      } else {
-        baseURL = config.api.baseURL;
-      }
-      let options = {
-        method: init.method,
-        headers: {
-          'Authorization': init.token || ReactHelper.basicToken,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      };
+			if (init.body) {
+				options.body = JSON.stringify(init.body);
+			}
 
-      if (init.body) {
-        options.body = JSON.stringify(init.body);
-      }
+			return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
+		});
+	}
 
-      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
-    });
-  }
+	static request(init, dispatch, effect) {
+		return new BPromise((resolve, reject) => {
+			let baseURL = init.baseURL || config.api.baseURL;
 
-  static request(init, dispatch, effect) {
-    return new BPromise((resolve, reject) => {
-      let baseURL = init.baseURL || config.api.baseURL;
+			if (localStorage.getItem(config.login.keyAccessToken)) {
+				init.token = `Bearer ${localStorage.getItem(config.login.keyAccessToken)}`;
+			}
+			let options = {
+				method: init.method,
+				headers: {
+					'Authorization': init.token || null,
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				}
+			};
 
-      if (localStorage.getItem(config.login.keyAccessToken)) {
-        init.token = `Bearer ${localStorage.getItem(config.login.keyAccessToken)}`;
-      }
-      let options = {
-        method: init.method,
-        headers: {
-          'Authorization': init.token || null,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      };
+			if (init.body) {
+				options.body = JSON.stringify(init.body);
+			}
 
-      if (init.body) {
-        options.body = JSON.stringify(init.body);
-      }
-
-      return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
-    });
-  }
+			return ReactHelper.responseFunc(options, reject, resolve, baseURL, init, dispatch, effect);
+		});
+	}
 
 }
 
