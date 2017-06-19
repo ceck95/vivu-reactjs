@@ -125,7 +125,7 @@ class Header extends Component {
           showMenu: true,
           headerTopHide: true
         };
-      } else if (sizeScroll === 0) {
+      } else if (sizeScroll <= 100) {
         dataAssign = {
           showMenu: false,
           headerTopHide: false
