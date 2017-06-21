@@ -1,6 +1,6 @@
 {
   "api": {
-    "baseURL": "http://localhost:3000",
+    "baseURL": "http://vivu.nhutuit.com/api",
     "clientId": "VmpGamQyVkhTWGROVm1oV1lUSm9jVlV3WXpSUFVUMDk="
   },
   "cdn": {
@@ -11,7 +11,8 @@
     "maxLengthPagination": 3,
     "limitListProductHome": 3,
     "limitListProductRightHome": 3,
-    "effectLoadListProduct": false,
+    "effectLoadListProduct": true,
+    "effectLoadDetailProduct": true,
     "distanceYear": 120,
     "countItemSlideHeaderInfoOfPageDetail": 4,
     "limitListProductOfPageDetail": 6,
@@ -19,15 +20,15 @@
     "defaultActiveTabCustomerInfo": "user",
     "filterItemPrice": 5,
     "filterItemPriceDistance": 10000000,
-    "localCurrency":"đ"
+    "localCurrency": "đ"
   },
-  "facebook":{
-    "appId":"192978661087964",
-    "version":"v2.9",
-    "comment":{
-      "width":"100%",
-      "url":"http://localhost:2000",
-      "numberPost":10
+  "facebook": {
+    "appId": "192978661087964",
+    "version": "v2.9",
+    "comment": {
+      "width": "100%",
+      "url": "http://localhost:2000",
+      "numberPost": 10
     }
   },
   "router": {
@@ -60,7 +61,7 @@
     "completed": 5,
     "cancel": 6
   },
-  "app":{
-    "elementId":"root"
+  "app": {
+    "elementId": "root"
   }
 }

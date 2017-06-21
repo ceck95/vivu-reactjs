@@ -66,6 +66,7 @@ class Pagination extends Component {
   }
 
   handlePagination(i) {
+		window.scroll(0,0);
     this.handleGetApiProduct(i);
   }
 

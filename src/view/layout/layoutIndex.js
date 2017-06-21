@@ -18,59 +18,89 @@ import loadStatus from '../../const/load-status';
 
 class LayoutIndex extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      dataCategoryGroup: [],
-      dataSetting: {},
-      load: false
-    }
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			dataCategoryGroup: [],
+			dataSetting: {},
+			load: false
+		}
+	}
 
-  componentWillMount() {
-    this.props.actions.getCategoryGroup();
-    this.props.actions.getSetting();
-  }
+	componentWillMount() {
+		this.props.actions.getCategoryGroup();
+		this.props.actions.getSetting();
+	}
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.loadingPage.loadingCategoryGroup) {
-      if (nextProps.categoryGroup.length > 0) {
-        this.setState({
-          dataCategoryGroup: nextProps.categoryGroup
-        });
-      }
-    }
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.loadingPage.loadingCategoryGroup) {
+			if (nextProps.categoryGroup.length > 0) {
+				this.setState({
+					dataCategoryGroup: nextProps.categoryGroup
+				});
+			}
+		}
 
-    if (nextProps.dataSetting.loadStatus === loadStatus.assignDataLoad) {
-      this.setState({
-        dataSetting: nextProps.dataSetting,
-        load: true
-      });
-      this.props.actions.setStatusDataSetting(loadStatus.available);
-    }
-  }
+		if (nextProps.dataSetting.loadStatus === loadStatus.assignDataLoad) {
+			this.setState({
+				dataSetting: nextProps.dataSetting,
+				load: true
+			});
+			this.props.actions.setStatusDataSetting(loadStatus.available);
+		}
+	}
 
-  render() {
-    if (this.state.load && this.state.dataCategoryGroup.length > 0) {
-      return (
-        <div>
-          <Components.header/>
-          { this.props.children }
-          <Components.footer/>
-        </div>
-      )
-    }
+	render() {
+		if (this.state.load && this.state.dataCategoryGroup.length > 0) {
+			return (
+				<div>
+      <Components.header/>
+      { this.props.children }
+      <Components.footer/>
+    </div>
+			)
+		}
 
-    return (
-      <div>Loading</div>
-    )
-  }
+		return (
+			<div className="container-fluid index-loading">
+     <div className="box-loading">
+       <div className="row">
+         <div className="col-md-12">
+           <div className="box-index-header"></div>
+         </div>
+       </div>
+			 <div className="row">
+         <div className="col-md-2 menu-loading">
+           <div className="box-index-menu"></div>
+         </div>
+				 <div className="col-md-10 slide-loading">
+           <div className="box-index-slide"></div>
+         </div>
+       </div>
+			 <div className="row">
+         <div className="col-md-10 menu-loading">
+           <div className="box-index-title"></div>
+           <div className="box-index-body"></div>
+         </div>
+				 <div className="col-md-2 slide-loading">
+           <div className="box-index-correlative"></div>
+         </div>
+       </div>
+			 <div className="row">
+         <div className="col-md-12">
+           <div className="box-index-header"></div>
+         </div>
+       </div>
+     </div>
+   </div>
+		)
+	}
 
 }
 
 let mapRedux = new ReactBase.helpers.mapRedux({
-  actions: actions,
-  bindActionCreators: bindActionCreators
+	actions: actions,
+	bindActionCreators: bindActionCreators
 });
 
 export default connect(mapRedux.mapStateToProps, mapRedux.mapDispatchToProps)(LayoutIndex)
