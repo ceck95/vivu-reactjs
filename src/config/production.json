@@ -11,7 +11,8 @@
     "maxLengthPagination": 6,
     "limitListProductHome": 9,
     "limitListProductRightHome": 3,
-    "effectLoadListProduct": false,
+    "effectLoadListProduct": true,
+    "effectLoadDetailProduct": true,
     "distanceYear": 120,
     "countItemSlideHeaderInfoOfPageDetail": 4,
     "limitListProductOfPageDetail": 10,
@@ -19,15 +20,15 @@
     "defaultActiveTabCustomerInfo": "user",
     "filterItemPrice": 5,
     "filterItemPriceDistance": 10000000,
-    "localCurrency":"đ"
+    "localCurrency": "đ"
   },
-  "facebook":{
-    "appId":"192978661087964",
-    "version":"v2.9",
-    "comment":{
-      "width":"100%",
-      "url":"http://reactjs.vivu.nhutuit.com/",
-      "numberPost":10
+  "facebook": {
+    "appId": "192978661087964",
+    "version": "v2.9",
+    "comment": {
+      "width": "100%",
+      "url": "http://reactjs.vivu.nhutuit.com/",
+      "numberPost": 10
     }
   },
   "router": {
@@ -60,7 +61,7 @@
     "completed": 5,
     "cancel": 6
   },
-  "app":{
-    "elementId":"root"
+  "app": {
+    "elementId": "root"
   }
 }
