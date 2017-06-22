@@ -63,32 +63,32 @@ class LayoutIndex extends Component {
 
 		return (
 			<div className="container-fluid index-loading">
-     <div className="box-loading">
+     <div className="load-loading">
        <div className="row">
          <div className="col-md-12">
-           <div className="box-index-header"></div>
+           <div className="load-index-header"></div>
          </div>
        </div>
 			 <div className="row">
          <div className="col-md-2 menu-loading">
-           <div className="box-index-menu"></div>
+           <div className="load-index-menu"></div>
          </div>
 				 <div className="col-md-10 slide-loading">
-           <div className="box-index-slide"></div>
+           <div className="load-index-slide"></div>
          </div>
        </div>
 			 <div className="row">
          <div className="col-md-10 menu-loading">
-           <div className="box-index-title"></div>
-           <div className="box-index-body"></div>
+           <div className="load-index-title"></div>
+           <div className="load-index-body"></div>
          </div>
 				 <div className="col-md-2 slide-loading">
-           <div className="box-index-correlative"></div>
+           <div className="load-index-correlative"></div>
          </div>
        </div>
 			 <div className="row">
          <div className="col-md-12">
-           <div className="box-index-header"></div>
+           <div className="load-index-header"></div>
          </div>
        </div>
      </div>

@@ -265,25 +265,25 @@ class BodyPageListProduct extends Component {
            : this.state.loadedListProduct ?
            <div className="col-md-12">Không có sản phẩm nào</div>
            :
-           <div className="col-md-12 box-loading">
+           <div className="col-md-12 loadface-loading">
              <div className="row">
                <div className="col-md-4">
-                 <div className="box-top-list"></div>
-                 <div className="box-list-title"></div>
-                 <div className="box-list-price"></div>
-                 <div className="box-list-button"></div>
+                 <div className="loadface-top-list"></div>
+                 <div className="loadface-list-title"></div>
+                 <div className="loadface-list-price"></div>
+                 <div className="loadface-list-button"></div>
                </div>
                <div className="col-md-4">
-                 <div className="box-top-list"></div>
-                 <div className="box-list-title"></div>
-                 <div className="box-list-price"></div>
-                 <div className="box-list-button"></div>
+                 <div className="loadface-top-list"></div>
+                 <div className="loadface-list-title"></div>
+                 <div className="loadface-list-price"></div>
+                 <div className="loadface-list-button"></div>
                </div>
                <div className="col-md-4">
-                 <div className="box-top-list"></div>
-                 <div className="box-list-title"></div>
-                 <div className="box-list-price"></div>
-                 <div className="box-list-button"></div>
+                 <div className="loadface-top-list"></div>
+                 <div className="loadface-list-title"></div>
+                 <div className="loadface-list-price"></div>
+                 <div className="loadface-list-button"></div>
                </div>
              </div>
            </div> }

@@ -130,31 +130,31 @@ class DetailProduct extends Component {
        </div>
        :
        <div className="row">
-         <div className="box-loading">
+         <div className="loadface-loading">
            <div className="row">
              <div className="col-md-12">
-               <div className="box-detail-header"></div>
+               <div className="loadface-detail-header"></div>
              </div>
            </div>
            <div className="row">
              <div className="col-md-1">
-               <div className="box-detail-product-color"></div>
-               <div className="box-detail-product-color"></div>
-               <div className="box-detail-product-color"></div>
+               <div className="loadface-detail-product-color"></div>
+               <div className="loadface-detail-product-color"></div>
+               <div className="loadface-detail-product-color"></div>
              </div>
              <div className="col-md-3">
-               <div className="box-detail-product"></div>
-               <div className="box-detail-product-button-facebook"></div>
+               <div className="loadface-detail-product"></div>
+               <div className="loadface-detail-product-button-facebook"></div>
              </div>
              <div className="col-md-4">
-               <div className="box-detail-title"></div>
-               <div className="box-detail-title-sub"></div>
-               <div className="box-detail-title-sub"></div>
-               <div className="box-detail-title-text"></div>
-               <div className="box-detail-title-button"></div>
+               <div className="loadface-detail-title"></div>
+               <div className="loadface-detail-title-sub"></div>
+               <div className="loadface-detail-title-sub"></div>
+               <div className="loadface-detail-title-text"></div>
+               <div className="loadface-detail-title-button"></div>
              </div>
              <div className="col-md-4">
-               <div className="box-detail-more"></div>
+               <div className="loadface-detail-more"></div>
              </div>
            </div>
            {/*<div className="row">
