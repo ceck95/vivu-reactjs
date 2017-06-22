@@ -131,7 +131,8 @@ class BodyPageListProduct extends Component {
 		if (config.default.effectLoadListProduct) {
 			this.setState({
 				dataListProduct: [],
-				dataPaginate: {}
+				dataPaginate: {},
+				loadedListProduct: false
 			});
 		}
 	}
