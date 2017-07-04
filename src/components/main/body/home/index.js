@@ -35,7 +35,7 @@ class Home extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.categoryGroup.length > 0 && !this.props.menuCategory.loadedListProductHome) {
       let listCategoryId = [];
       this.props.categoryGroup.forEach(e => {
