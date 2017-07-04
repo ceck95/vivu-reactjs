@@ -67,7 +67,7 @@ class Footer extends Component {
               </ul>
             </div>
             <div className="col-sm-2">
-              <h3 className="footer_title">Cras ultricies ligula</h3>
+              <h3 className="footer_title">Liên hệ</h3>
               <ul className="footer_lists footer_lists-socials">
                 <li><a href="#" className="social"><i className="fa fa-2x fa-facebook" aria-hidden="true"></i></a></li>
                 <li><a href="#" className="social"><i className="fa fa-2x fa-youtube" aria-hidden="true"></i></a></li>
